@@ -17,7 +17,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@page/*": ["./src/page/*"],
+      "@axios": ["./src/plugin/axios"],
+      "@api/*": ["./src/api/*"]
+    },
   },
   "include": [
     "src"
