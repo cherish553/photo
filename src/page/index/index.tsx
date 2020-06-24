@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import style from "./index.module.scss";
-import { Carousel, WingBlank, Flex } from "antd-mobile";
+import { Carousel, WingBlank } from "antd-mobile";
 import Logo from "@/layout/logo";
 import classnames from "classnames";
+import CardList from '@/components/cardList'
 export default function Index() {
   const [data] = useState(["1", "2", "3"]);
-  const [imgHeight, setImgHeight] = useState<number | string>(176);
+  // const [imgHeight, setImgHeight] = useState<number | string>(176);
   const [slideIndex, setSlideIndex] = useState<number>(0);
 
   return (
@@ -40,24 +41,7 @@ export default function Index() {
         <span></span>
       </div>
       <div className={style.w100}>
-        {[1, 2, 3].map((item) => (
-          <div key={item} className={style.col}>
-            <div className={style.card}>
-              <img src="" alt="" />
-              <div className={style.ml20}>
-                <p className={style.name}>微信书</p>
-                <p className={style.price}>￥0.7/页起</p>
-              </div>
-            </div>
-            <div className={style.card}>
-              <img src="" alt="" />
-              <div className={style.ml20}>
-                <p className={style.name}>微信书</p>
-                <p className={style.price}>￥0.7/页起</p>
-              </div>
-            </div>
-          </div>
-        ))}
+        <CardList/>
       </div>
     </div>
   );

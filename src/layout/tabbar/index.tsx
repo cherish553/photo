@@ -7,7 +7,7 @@ import show from "@/page/show";
 import user from "@/page/user";
 import cart from "@/page/cart";
 import { TabBar } from "antd-mobile";
-import classnames from 'classnames';
+import classnames from "classnames";
 import { withRouter, RouteComponentProps } from "react-router";
 import homeImg from "@static/tabbar/home.png";
 import homeSelectImg from "@static/tabbar/homeSelect.png";
@@ -26,14 +26,16 @@ const Tabbar = (props: RouteComponentProps) => {
     props.history.push(select);
   }, [props.history, select]);
   return (
-    <div className={classnames("h100",style.relate)}>
-      <Switch>
-        <Route exact path="/" component={index} />,
-        <Route exact path="/print" component={print} />,
-        <Route exact path="/show" component={show} />,
-        <Route exact path="/cart" component={cart} />,
-        <Route exact path="/user" component={user} />,
-      </Switch>
+    <div className={classnames("h100", style.relate)}>
+      <div className={style.main}>
+        <Switch>
+          <Route exact path="/" component={index} />,
+          <Route exact path="/print" component={print} />,
+          <Route exact path="/show" component={show} />,
+          <Route exact path="/cart" component={cart} />,
+          <Route exact path="/user" component={user} />,
+        </Switch>
+      </div>
       <div className={style.tabbar}>
         <TabBar
           unselectedTintColor="#BBBBBB"

@@ -1,7 +1,6 @@
 @import '@/style/index.scss';
 
 .tabbar {
-    position: absolute;
     bottom: 0;
     width: 750px;
     height: 100px;
@@ -12,6 +11,11 @@
     height: 50px;
 }
 .relate{
-    @include borderBox(0 0  100px 0);
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+}
+.main{
+    overflow: scroll;
+    flex: 1;
 }
