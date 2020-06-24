@@ -1,108 +1,91 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import style from "./index.module.scss";
-import { HashRouter, Route, Switch } from "react-router-dom";
-import home from "@/page/home";
-import aa from "@/page/aa";
+import { Route, Switch } from "react-router-dom";
+import index from "@/page/index";
+import print from "@/page/print";
+import show from "@/page/show";
+import user from "@/page/user";
+import cart from "@/page/cart";
 import { TabBar } from "antd-mobile";
-import bb from "@/page/bb";
-import { withRouter } from "react-router";
-const A = (props: any) => {
-  console.log(props);
+import classnames from 'classnames';
+import { withRouter, RouteComponentProps } from "react-router";
+import homeImg from "@static/tabbar/home.png";
+import homeSelectImg from "@static/tabbar/homeSelect.png";
+import cartImg from "@static/tabbar/cart.png";
+import cartSelectImg from "@static/tabbar/cartSelect.png";
+import userImg from "@static/tabbar/user.png";
+import userSelectImg from "@static/tabbar/userSelect.png";
+import showImg from "@static/tabbar/show.png";
+import showSelectImg from "@static/tabbar/showSelect.png";
+import printImg from "@static/tabbar/print.png";
+import printSelectImg from "@static/tabbar/printSelect.png";
+type SelectStatus = "/" | "cart" | "user" | "print" | "show";
+const Tabbar = (props: RouteComponentProps) => {
+  const [select, setSelect] = useState<SelectStatus>("/");
+  useEffect(() => {
+    props.history.push(select);
+  }, [props.history, select]);
   return (
-    <div className="h100">
+    <div className={classnames("h100",style.relate)}>
       <Switch>
-        <Route exact path="/" component={home} />,
-        <Route exact path="/aa" component={aa} />,
-        <Route exact path="/bb" component={bb} />,
+        <Route exact path="/" component={index} />,
+        <Route exact path="/print" component={print} />,
+        <Route exact path="/show" component={show} />,
+        <Route exact path="/cart" component={cart} />,
+        <Route exact path="/user" component={user} />,
       </Switch>
-      <div>
+      <div className={style.tabbar}>
         <TabBar
-          unselectedTintColor="#949494"
-          tintColor="#33A3F4"
+          unselectedTintColor="#BBBBBB"
+          tintColor="#E52611"
           barTintColor="white"
         >
-          <TabBar.Item
-            title="Life"
-            key="Life"
-            icon={
-              <div
-                style={{
-                  width: "22px",
-                  height: "22px",
-                  background:
-                    "url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat",
-                }}
-              />
-            }
-            selectedIcon={
-              <div
-                style={{
-                  width: "22px",
-                  height: "22px",
-                  background:
-                    "url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat",
-                }}
-              />
-            }
-            badge={1}
-            data-seed="logId"
-          ></TabBar.Item>
-          <TabBar.Item
-            title="Life"
-            key="Life"
-            icon={
-              <div
-                style={{
-                  width: "22px",
-                  height: "22px",
-                  background:
-                    "url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat",
-                }}
-              />
-            }
-            selectedIcon={
-              <div
-                style={{
-                  width: "22px",
-                  height: "22px",
-                  background:
-                    "url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat",
-                }}
-              />
-            }
-            badge={1}
-            data-seed="logId"
-          ></TabBar.Item>
-
-          <TabBar.Item
-            title="Life"
-            key="Life"
-            icon={
-              <div
-                style={{
-                  width: "22px",
-                  height: "22px",
-                  background:
-                    "url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat",
-                }}
-              />
-            }
-            selectedIcon={
-              <div
-                style={{
-                  width: "22px",
-                  height: "22px",
-                  background:
-                    "url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat",
-                }}
-              />
-            }
-            badge={1}
-            data-seed="logId"
-          ></TabBar.Item>
+          {[
+            {
+              key: "/",
+              title: "首页",
+              icon: homeImg,
+              selectedIcon: homeSelectImg,
+            },
+            {
+              key: "print",
+              title: "印品",
+              icon: printImg,
+              selectedIcon: printSelectImg,
+            },
+            {
+              key: "show",
+              title: "展厅",
+              icon: showImg,
+              selectedIcon: showSelectImg,
+            },
+            {
+              key: "cart",
+              title: "购物车",
+              icon: cartImg,
+              selectedIcon: cartSelectImg,
+            },
+            {
+              key: "user",
+              title: "我的",
+              icon: userImg,
+              selectedIcon: userSelectImg,
+            },
+          ].map((item) => (
+            <TabBar.Item
+              onPress={() => setSelect(item.key as SelectStatus)}
+              selected={select === item.key}
+              title={item.title}
+              key={item.key}
+              icon={<img className={style.icon} src={item.icon} alt="" />}
+              selectedIcon={
+                <img className={style.icon} src={item.selectedIcon} alt="" />
+              }
+            ></TabBar.Item>
+          ))}
         </TabBar>
       </div>
     </div>
   );
 };
-export default withRouter(A);
+export default withRouter(Tabbar);

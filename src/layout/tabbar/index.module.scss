@@ -1,6 +1,17 @@
-.tabbar{
+@import '@/style/index.scss';
+
+.tabbar {
+    position: absolute;
+    bottom: 0;
     width: 750px;
     height: 100px;
-    background-color: skyblue;
+}
 
+.icon {
+    width: 50px;
+    height: 50px;
+}
+.relate{
+    @include borderBox(0 0  100px 0);
+    position: relative;
 }

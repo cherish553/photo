@@ -306,6 +306,7 @@ module.exports = function (webpackEnv) {
         '@page': paths.appPage,
         '@axios': paths.axios,
         '@api': paths.api,
+        '@static': paths.static,
         ...(modules.webpackAliases || {}),
       },
       plugins: [

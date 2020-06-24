@@ -60,6 +60,7 @@ module.exports = {
   appSrc: resolveApp('src'),
   axios: resolveApp('src/plugin/axios/index'),
   api: resolveApp('src/api'),
+  static: resolveApp('src/static'),
   appPage: resolveApp('src/page'),
   appTsConfig: resolveApp('tsconfig.json'),
   appJsConfig: resolveApp('jsconfig.json'),

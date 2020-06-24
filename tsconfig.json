@@ -23,7 +23,8 @@
       "@/*": ["./src/*"],
       "@page/*": ["./src/page/*"],
       "@axios": ["./src/plugin/axios"],
-      "@api/*": ["./src/api/*"]
+      "@api/*": ["./src/api/*"],
+      "@static/*": ["./src/static/*"]
     },
   },
   "include": [

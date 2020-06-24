@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import Tabbar from "@/layout/tabbar";
 
 
@@ -10,11 +10,8 @@ import Tabbar from "@/layout/tabbar";
 const BasicRoute = () => {
   return (
     <HashRouter>
-     
         <Tabbar>
-      
         </Tabbar>
-    
     </HashRouter>
   );
 };
