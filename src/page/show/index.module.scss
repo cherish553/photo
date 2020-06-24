@@ -1,3 +1,5 @@
+@import '@/style/index.scss';
+
 .header {
     width: 750px;
     height: 100px;
@@ -8,4 +10,190 @@
     width: 50%;
     height: 100px;
     background-color: red;
+}
+
+.space-carousel {
+    padding: 16px;
+    // background: #DEF1E5;
+    overflow: hidden;
+}
+
+.h400 {
+    height: 550px;
+
+    img {
+        width: 100%;
+        display: "block";
+        position: "relative";
+        background-color: skyblue;
+        box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.2);
+        height: 500px;
+    }
+
+    .active {
+        height: 550px;
+    }
+}
+
+.h550 {
+    height: 600px;
+}
+
+$heihgt:50px;
+
+.title {
+    height: $heihgt;
+    line-height: $heihgt;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 22px;
+
+    p {
+        left: 0;
+        right: 0;
+
+        margin: auto;
+        text-align: center;
+
+
+
+        z-index: 2;
+        position: absolute;
+        font-size: 32px;
+        font-family: Source Han Sans SC;
+        font-weight: bold;
+        color: black;
+    }
+
+    span {
+        // content: "";
+        width: 160px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 4px;
+        margin: auto;
+        height: 16px;
+        background-color: #FF7B6D;
+        z-index: 1;
+    }
+}
+
+
+.w100 {
+    width: 100%;
+}
+
+.col {
+    @include flex;
+    @include borderBox(0 40px);
+    margin-bottom: 30px;
+
+    .card {
+        width: 320px;
+        height: 360px;
+        box-shadow: 0px 10px 40px rgba(136, 136, 136, 0.3);
+        border-radius: 20px;
+
+        img {
+            border-radius: 20px 20px 0 0;
+            display: block;
+            width: 320px;
+            height: 240px;
+            background-color: skyblue;
+        }
+
+        .ml20 {
+            margin-left: 20px;
+
+            .name {
+                color: #020202;
+                font-size: 28px;
+                margin-top: 20px;
+            }
+
+            .price {
+                color: #E52611;
+                font-size: 24px;
+                margin-top: 2px;
+            }
+        }
+    }
+}
+
+.titleText {
+    padding-left: 76px;
+    color: #020202;
+    font-size: 32px;
+}
+
+.flex-detail {
+    margin-top: 4px;
+    @include flex;
+    @include borderBox(0 74px 0 76px);
+    width: 100%;
+
+    .detail {
+        color: #888888;
+        font-size: 24px
+    }
+}
+
+.detail-right {
+    img {
+        margin-right: 6px;
+        width: 33px;
+        height: 30px;
+    }
+
+    @include flex(flex-start);
+    font-size: 24px;
+    font-family: Source Han Sans SC;
+    font-weight: 400;
+    color: rgba(229, 38, 17, 1);
+}
+
+.tabs {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    @include flex;
+    @include borderBox(0 40px);
+
+    &Left,
+    &Right {
+        font-size: 28px;
+        font-family: Source Han Sans SC;
+        font-weight: bold;
+        @include flex('flex-start')
+    }
+
+    .hot {
+        margin-right: 40px;
+    }
+
+    &Left {
+        color: #888888;
+    }
+
+    .active {
+        &::after {
+            left: 50%;
+            transform: translateX(-50%);
+            position: absolute;
+            content: '';
+            bottom: -6px;
+            width: 80px;
+            height: 6px;
+            background: #E52611;
+        }
+
+        position: relative;
+        color: #E52611;
+    }
+
+}
+.mt20{
+    margin-top: 20px;
+    margin-bottom: 20px;
 }

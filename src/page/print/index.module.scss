@@ -54,6 +54,7 @@
     .search-input {
         @include borderBox(0 20px);
         width: 100%;
+        transition: width;
         height: 100%;
         background: rgba(238, 238, 238, 1);
         border-radius: 30px;
