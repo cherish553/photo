@@ -1,1 +1,171 @@
 @import '@/style/index.scss';
+
+.introduction {
+    width: 670px;
+    height: 200px;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 10px 10px 40px rgba(136, 136, 136, 0.16);
+    border-radius: 20px;
+    margin: 100px auto 0;
+    position: relative;
+
+    .avatar {
+        width: 140px;
+        height: 140px;
+        position: absolute;
+        top: 0;
+        border-radius: 50%;
+        left: 20px;
+        transform: translateY(-50%);
+        display: block;
+        background-color: skyblue;
+    }
+
+    .userName {
+        @include borderBox(24px 44px 24px 180px);
+        @include flex(space-between, flex-end);
+
+        .name {
+            color: #000000;
+            font-size: 36px;
+            font-family: Source Han Sans SC;
+            font-weight: bold;
+        }
+
+        .no {
+            color: #888888;
+            font-size: 24px;
+        }
+
+    }
+
+    .line {
+        margin: 0 auto;
+        width: 630px;
+        height: 4px;
+        background-color: #EEEEEE;
+    }
+
+    .gather {
+        @include flex(center);
+        text-align: center;
+
+        .article {
+            margin-top: 10px;
+        }
+
+        .commission {
+            margin-top: 10px;
+        }
+
+        .vertical {
+            margin: 0 96px;
+            height: 66px;
+            width: 4px;
+            margin-top: 18px;
+            background-color: #EEEEEE;
+        }
+
+        .price {
+            color: #E52611;
+            font-size: 32px;
+            font-family: Source Han Sans SC;
+            font-weight: 400;
+
+        }
+
+        .my {
+            margin-top: 8px;
+            font-size: 24px;
+            font-family: Source Han Sans SC;
+            font-weight: 400;
+            color: black;
+        }
+    }
+
+}
+
+.order {
+    width: 670px;
+    height: 240px;
+    background-color: #fff;
+    box-shadow: 10px 10px 40px rgba(136, 136, 136, 0.16);
+    border-radius: 20px;
+    margin: 20px auto 0;
+
+    .orderDetail {
+        @include flex;
+        @include borderBox(0 20px);
+        height: 80px;
+        border-bottom: 4px solid #EEEEEE;
+        // color: #EEEEEE;
+        font-size: 24px;
+
+        .myOrder {
+            // color: ;
+        }
+
+        .all {
+            @include flex(flex-end);
+
+            .search {
+                color: #888888;
+
+            }
+
+            .icon {
+                line-height: 50px;
+                height: 50px;
+                color: #E52611;
+                font-size: 50px;
+            }
+        }
+    }
+
+    .status {
+        @include borderBox(10px 40px 0);
+        @include flex;
+        height: 160px;
+        text-align: center;
+
+        .payImage {
+            img {
+                margin: 0 auto 10px;
+                display: block;
+                width: 72px;
+            }
+        }
+
+        .waitSendImage {
+            img {
+                margin: 0 auto 10px;
+                display: block;
+                width: 57px;
+            }
+        }
+
+        .waitReciveImage {
+            img {
+                margin: 0 auto 10px;
+                display: block;
+                width: 60px;
+            }
+        }
+
+        .waitCommentImage {
+            img {
+                margin: 0 auto 10px;
+                display: block;
+                width: 50px;
+            }
+        }
+
+        .postSaleImage {
+            img {
+                margin: 0 auto 10px;
+                display: block;
+                width: 48px;
+            }
+        }
+    }
+}
