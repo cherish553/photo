@@ -2,8 +2,8 @@ import { get, post, del } from '@axios'
 import { CouponDetail, CouponData, AddCouponDetail, NewUserDetail } from './api'
 // 获取优惠券列表
 // export const getCouponList = ({ page }: { page: number }): (Promise<Array<CouponDetail> | []>) =>
-//     get<CouponData | false>('admin/couponList', { page })
-//         .then(res => (!res ? [] : res.data))
+    // get<CouponData | false>('admin/couponList', { page })
+    //     .then(res => (!res ? [] : res.data))
 // // 优惠券添加
 // export const postAddBanner = (data: AddCouponDetail): Promise<[]> =>
 //     post('admin/editCoupon', { ...data, id: '' })

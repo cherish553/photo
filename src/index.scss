@@ -74,3 +74,13 @@ body,
 .am-carousel-wrap-dot-active>span {
   background-color: #E52611 !important;
 }
+
+.am-checkbox-checked {
+  .am-checkbox-inner {
+    border-color: #E52611 !important;
+    background: #E52611 !important;
+  }
+}
+.am-list-item{
+  padding-left: 0;
+}

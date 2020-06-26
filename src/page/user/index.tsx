@@ -1,10 +1,11 @@
 import React from "react";
 import style from "./index.module.scss";
-export default function A() {
+import Logo from "@/layout/logo";
+
+export default function User() {
   return (
     <div>
-      <div className={style.header}></div>
-      <div className={style.aaa}></div>
+      <Logo />
     </div>
   );
 }

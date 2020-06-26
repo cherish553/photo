@@ -1,16 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Logo from "@/layout/logo";
 import star from "@static/show/star.png";
 import style from "./index.module.scss";
 import CardlList from "@/components/cardList";
 import classnames from "classnames";
 import { Carousel, WingBlank } from "antd-mobile";
+import { Refs } from "./components/modal/declare";
+import Modal from "./components/modal";
+
 export default function A() {
+  const Ref = useRef<Refs>();
   const [active, setActive] = useState(0);
   const [data] = useState(["1", "2", "3"]);
   const [slideIndex, setSlideIndex] = useState<number>(0);
+  const showModal = () => {
+    Ref.current?.setActive(true);
+  };
   return (
-    <div>
+    <div className={style.relative}>
       <Logo />
       <WingBlank className={style.h550}>
         <Carousel
@@ -45,7 +52,7 @@ export default function A() {
           </div>
           <div>最新</div>
         </div>
-        <div className={style.tabsLeft}>
+        <div className={style.tabsLeft} onClick={showModal}>
           <div className={active === 1 ? style.active : ""}>筛选</div>
           <div>&lt;</div>
         </div>
@@ -60,9 +67,10 @@ export default function A() {
           </div>
         </div>
       </div>
-      <div >
+      <div>
         <CardlList />
       </div>
+      <Modal ref={Ref}></Modal>
     </div>
   );
 }

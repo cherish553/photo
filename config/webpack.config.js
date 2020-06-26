@@ -102,8 +102,8 @@ module.exports = function (webpackEnv) {
             }),
             require('postcss-pxtorem')({
               rootValue: 32,
-              selectorBlackList  : ['.am'], //过滤
-              propList   : ['*'],
+              selectorBlackList: ['.am'], //过滤
+              propList: ['*'],
             }),
             // Adds PostCSS Normalize as the reset css with default options,
             // so that it honors browserslist config in package.json

@@ -1,0 +1,17 @@
+.abs {
+    position: absolute;
+    width: 100%;
+    height:100vh;
+    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    margin: auto;
+    z-index: 100;
+    .modal{
+        transition: width .5s;
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        background-color: #fff;
+    }
+}

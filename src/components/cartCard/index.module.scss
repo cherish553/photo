@@ -1,0 +1,11 @@
+@import '@/style/index.scss';
+
+.cardList {
+    width: 670px;
+    height: 256px;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 10px 10px 40px rgba(136, 136, 136, 0.16);
+    border-radius: 20px;
+    margin: 20px auto 0;
+    @include flex(center)
+}

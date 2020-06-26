@@ -1,11 +1,156 @@
-.header {
-    width: 750px;
-    height: 100px;
-    background-color: red;
+@import '@/style/index.scss';
+
+.cart {
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .cardList {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: scroll;
+
+        .card {
+            overflow: scroll;
+            flex: 1;
+            padding-bottom: 20px;
+        }
+
+        .pay {
+            height: 100px;
+            width: 100%;
+            background-color: #fff;
+            @include flex;
+            @include borderBox(0 40px);
+
+            .payLeft {
+                @include flex(flex-start);
+
+                .all {
+                    color: #020202;
+                    font-size: 24px;
+                    margin-left: 10px;
+                }
+
+                21px        .sum {
+                    color: #020202;
+                    font-size: 28px;
+                    margin-left: 20px;
+                }
+
+                .allPirce {
+                    margin-left: 20px;
+
+                    color: #E52611;
+
+                }
+            }
+
+            .payBtn {
+                width: 200px;
+                height: 80px;
+                background-color: #E52611;
+                color: white;
+                border-radius: 40px;
+                line-height: 80px;
+                text-align: center;
+            }
+
+        }
+    }
+
+
 }
 
-.aaa {
-    width: 50%;
-    height: 100px;
-    background-color: red;
+.check {
+
+    width: 42px;
+}
+
+.flex {
+    @include flex;
+    @include borderBox(0 20px);
+
+
+
+    .inner {
+        display: flex;
+        flex: 1;
+        padding-left: 20px;
+        height: 180px;
+        background-color: skyblue;
+
+        .goodImg {
+            width: 180px;
+            height: 100%;
+            display: block;
+            background-color: red;
+        }
+
+        .rightInner {
+            flex: 1;
+            padding-left: 20px;
+            height: 100%;
+            background-color: green;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .name {
+                font-size: 28px;
+                font-family: Source Han Sans SC;
+            }
+
+            .type {
+                // margin-top: 16px;
+                color: #888888;
+                font-size: 24px;
+                font-family: Source Han Sans SC;
+            }
+
+            .spec {
+                // margin-top: 18px;
+                color: #888888;
+                font-size: 24px;
+            }
+
+            .bottom {
+                @include flex;
+
+                .price {
+                    color: #E52611;
+                    font-size: 28px;
+                    font-family: Source Han Sans SC;
+                    font-weight: bold;
+                }
+
+                .input {
+                    @include flex;
+                    height: 40px;
+
+                    input {
+                        width: 60px;
+                        background-color: #EEEEEE;
+                        height: 100%;
+                        border: none;
+                        text-align: center;
+                        border-radius: 6px;
+                        margin: 0 10px;
+                    }
+
+                    .minius {
+                        font-size: 50px;
+                    }
+
+                    .plus {
+                        font-size: 50px;
+
+                    }
+
+                }
+            }
+        }
+    }
 }
