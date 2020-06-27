@@ -8,6 +8,14 @@ import waitComment from "@static/user/waitComment.png";
 import postSale from "@static/user/postSale.png";
 import List from "./components/list";
 import article from "@static/user/article.png";
+import money from "@static/user/money.png";
+import coupon from "@static/user/coupon.png";
+import invite from "@static/user/invite.png";
+import address from "@static/user/address.png";
+import setting from "@static/user/setting.png";
+import chat from "@static/user/chat.png";
+import about from "@static/user/about.png";
+import classnames from 'classnames'
 export default function User() {
   return (
     <div>
@@ -63,10 +71,18 @@ export default function User() {
             <p>售后</p>
           </div>
         </div>
-        <List line src={article} inner="我的作品" />
-        <List line src={article} inner="我的作品" />
-        <List line src={article} inner="我的作品" />
-        <List line src={article} inner="我的作品" />
+        <div className={style.list}>
+          <List line src={article} inner="我的作品" />
+          <List line src={money} inner="我的余额" />
+          <List line src={coupon} inner="我的优惠券" />
+          <List  src={invite} inner="邀请有礼" />
+        </div>
+        <div className={classnames(style.list,style.mb34)}>
+          <List line src={address} inner="我的地址" />
+          <List line src={setting} inner="设置" />
+          <List line src={chat} inner="在线客服" />
+          <List  src={about} inner="关于我们" />
+        </div>
       </div>
     </div>
   );
