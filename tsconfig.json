@@ -25,7 +25,7 @@
       "@axios": ["./src/plugin/axios"],
       "@api/*": ["./src/api/*"],
       "@static/*": ["./src/static/*"]
-    },
+    }
   },
   "include": [
     "src"

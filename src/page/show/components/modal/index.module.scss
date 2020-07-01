@@ -1,12 +1,13 @@
 .abs {
-    position: absolute;
+    position: fixed;
     width: 100%;
-    height:100vh;
+    height: calc(100% - 50Px);
     background: rgba(0, 0, 0, 0.5);
     top: 0;
     margin: auto;
     z-index: 100;
-    .modal{
+
+    .modal {
         transition: width .5s;
         position: absolute;
         right: 0;

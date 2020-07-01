@@ -1,48 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef, RefObject } from "react";
 import style from "./index.module.scss";
 import classnames from "classnames";
 import Logo from "@/layout/logo";
 import search from "@static/print/search.png";
 import CardList from "@/components/cardList";
 export default function Print() {
+  const inputRef = useRef<any>();
   const [selectIndex, setSelectIndex] = useState(0);
   const [tabs, setTabs] = useState(true);
   const [searchValue, setSearchValue] = useState("");
-
+  const toggleTabs = (e: Event) => {
+    window.removeEventListener("click", toggleTabs);
+    setTabs(true);
+  };
+  useEffect(() => {
+    if (inputRef.current && !tabs) {
+      inputRef.current.focus();
+    }
+  }, [tabs]);
   const changeSearch = () => {};
   return (
     <div>
       <Logo></Logo>
-      {tabs && (
+      {(tabs && (
         <div className={style["search-tabs"]}>
-          <>
-            <div className={style.tabs}>
-              {Array.from({ length: 20 }).map((_item, index) => (
-                <div
-                  onClick={() => setSelectIndex(index)}
-                  className={classnames(
-                    style["tabs-detail"],
-                    selectIndex === index ? style.active : ""
-                  )}
-                >
-                  {index}
-                </div>
-              ))}
-            </div>
-            <div>
-              <img
-                onClick={() => setTabs(false)}
-                className={style["search-icon"]}
-                src={search}
-                alt=""
-              />
-            </div>
-          </>
+          <div className={style.tabs}>
+            {Array.from({ length: 20 }).map((_item, index) => (
+              <div
+                key={index}
+                onClick={() => setSelectIndex(index)}
+                className={classnames(
+                  style["tabs-detail"],
+                  selectIndex === index ? style.active : ""
+                )}
+              >
+                {index}
+              </div>
+            ))}
+          </div>
+          <div>
+            <img
+              onClick={() => {
+                console.log(123);
+                setTabs(false);
+                setTimeout(
+                  () => window.addEventListener("click", toggleTabs),
+                  0
+                );
+              }}
+              className={style["search-icon"]}
+              src={search}
+              alt=""
+            />
+          </div>
         </div>
-      )}
-      {!tabs && (
-        <div className={style["search-dev"]}>
+      )) || (
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className={style["search-dev"]}
+        >
           <input
+            ref={inputRef}
             onChange={(e) => setSearchValue(e.target.value)}
             value={searchValue}
             className={style["search-input"]}
