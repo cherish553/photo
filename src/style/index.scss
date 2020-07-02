@@ -9,3 +9,10 @@
     box-sizing: border-box;
     padding: $padding
 }
+
+@mixin column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start
+}

@@ -178,10 +178,11 @@
         }
 
         &Inner {
-            @include flex(space-between,flex-start);
+            @include flex(space-between, flex-start);
             flex-direction: column;
             height: 80px;
             margin-left: 20px;
+
             >:nth-child(1) {
                 color: #020202
             }
@@ -190,5 +191,39 @@
                 color: #888888
             }
         }
+    }
+}
+
+.pay {
+    @include borderBox(0 40px);
+    @include flex;
+    height: 120px;
+    margin-top: 64px;
+    background-color: #fff;
+
+    &Left {
+        @include flex(flex-start);
+
+        >:nth-child(1) {
+            color: #020202;
+            font-size: 28px
+        }
+
+        >:nth-child(2) {
+            margin-left: 20px;
+            font-size: 28px;
+            color: #E52611;
+        }
+    }
+
+    &Btn {
+        width: 200px;
+        height: 80px;
+        background-color: #E52611;
+        border-radius: 40px;
+        line-height: 80px;
+        text-align: center;
+        font-size: 28px;
+        color: white;
     }
 }

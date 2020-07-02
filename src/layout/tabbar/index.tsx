@@ -6,7 +6,8 @@ import print from "@/page/print";
 import show from "@/page/show";
 import user from "@/page/user";
 import cart from "@/page/cart";
-import settlement from '@/page/cart/settlement' 
+import settlement from "@/page/cart/settlement";
+import address from "@/page/cart/address";
 import printDetail from "@/page/print/detail";
 import printDetailComment from "@/page/print/detail/comment";
 
@@ -26,31 +27,45 @@ import printSelectImg from "@static/tabbar/printSelect.png";
 type SelectStatus = "/" | "cart" | "user" | "print" | "show";
 const Tabbar = (props: RouteComponentProps) => {
   const [select, setSelect] = useState<SelectStatus>("/");
-  const [showTabbar,setShowTabbar] = useState(true)
+  const [showTabbar, setShowTabbar] = useState(true);
   useEffect(() => {
     props.history.push(select);
   }, [props.history, select]);
-  
-  useEffect(()=>{
-    const pathname = props.history.location.pathname
-    if(pathname==='/'||pathname==='/print'||pathname==='/show'||pathname==='/cart'||pathname==='/user') return setShowTabbar(true)
-    setShowTabbar(false)
-  },[props.history.location.pathname])
+
+  useEffect(() => {
+    const pathname = props.history.location.pathname;
+    if (
+      pathname === "/" ||
+      pathname === "/print" ||
+      pathname === "/show" ||
+      pathname === "/cart" ||
+      pathname === "/user"
+    )
+      return setShowTabbar(true);
+    setShowTabbar(false);
+  }, [props.history.location.pathname]);
   return (
     <div className={classnames("h100", style.relate)}>
       <div className={style.main}>
         <Switch>
-          <Route strict exact path="/settlement" component={index} />,
+          <Route strict exact path="/address" component={index} />,
           <Route strict exact path="/print" component={print} />,
           <Route strict exact path="/show" component={show} />,
           <Route strict exact path="/cart" component={cart} />,
           <Route strict exact path="/user" component={user} />,
           <Route strict exact path="/printDetail" component={printDetail} />,
-          <Route strict exact path="printDetailComment" component={printDetailComment} />,
-          <Route strict exact path="/" component={settlement} />,
+          <Route
+            strict
+            exact
+            path="printDetailComment"
+            component={printDetailComment}
+          />
+          ,
+          <Route strict exact path="/settlement" component={settlement} />,
+          <Route strict exact path="/" component={address} />,
         </Switch>
       </div>
-      {showTabbar&&
+      {showTabbar && (
         <div className={style.tabbar}>
           <TabBar
             unselectedTintColor="#BBBBBB"
@@ -102,7 +117,7 @@ const Tabbar = (props: RouteComponentProps) => {
             ))}
           </TabBar>
         </div>
-      }
+      )}
     </div>
   );
 };

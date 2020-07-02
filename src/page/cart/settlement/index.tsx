@@ -72,7 +72,13 @@ export default function Settlement() {
         </div>
         <div>{">"}</div>
       </div>
-      <div className={style.pay}></div>
+      <div className={style.pay}>
+        <div className={style.payLeft}>
+          <p>合计</p>
+          <p>￥88.00</p>
+        </div>
+        <div className={style.payBtn}>去结算</div>
+      </div>
     </div>
   );
 }
