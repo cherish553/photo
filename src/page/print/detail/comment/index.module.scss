@@ -8,13 +8,103 @@
     color: #000000;
     font-size: 36px;
     font-weight: bold;
+    background-color: #fff;
     height: 100px;
+
     &Back {
         position: absolute;
         top: 50%;
-        margin-top: -50%;
-        font-size: 40px;
-        color:#E52611;
+        transform: translateY(-50%);
+        font-size: 50px;
+        color: #E52611;
         left: 40px;
+    }
+}
+
+.rate {
+    @include borderBox(18px 0);
+    @include flex;
+    height: 220px;
+    background-color: #fff;
+
+    &Left {
+        @include flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        width: 350px;
+        height: 100%;
+
+        &Score {
+            font-size: 60px;
+            font-family: Source Han Sans SC;
+            font-weight: bold;
+        }
+
+        &Count {
+            font-size: 24px;
+            font-family: Source Han Sans SC;
+            font-weight: 400;
+            color: #888888;
+        }
+    }
+
+    &Right {
+        @include flex;
+        box-sizing: border-box;
+        padding-right: 60px;
+        flex-direction: column;
+        height: 100%;
+        flex-shrink: 0;
+        width: 400px;
+
+        &Flex {
+            @include flex;
+            width: 100%;
+            font-size: 24px;
+
+            &Count {
+                flex-shrink: 0;
+                width: 30px;
+            }
+        }
+
+        &Progress {
+            flex: 1 // width: 100%;
+                // flex-shrink: 0;
+        }
+    }
+}
+
+.list {
+    background-color: #fff;
+    margin-top: 20px;
+
+    .card {
+        @include borderBox(26px 40px);
+        border-bottom: 1px solid #EEEEEE;
+        &User {
+            @include flex(flex-start);
+
+            &Avatar {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                background-color: skyblue;
+            }
+
+            &Name {
+                margin-left: 20px;
+                font-size: 28px;
+            }
+        }
+
+        &Select {
+            @include flex;
+            width: 100%;
+        }
+
+        &Comment {
+            font-size: 24px;
+        }
     }
 }
