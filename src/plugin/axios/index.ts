@@ -3,7 +3,6 @@ import cookie from 'js-cookie'
 const http = axios.create({
   baseURL: `/api`,
 })
-
 http.interceptors.request.use(
   config => {
     const token = cookie.get('token')

@@ -4,7 +4,7 @@
     align-items: $align;
 }
 
-@mixin borderBox($padding) {
+@mixin borderBox($padding:0) {
     width: 100%;
     box-sizing: border-box;
     padding: $padding

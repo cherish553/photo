@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import style from "./index.module.scss";
-import classnames from "classnames";
-import { Carousel, Tabs, WhiteSpace, Badge } from "antd-mobile";
+import { Carousel, Tabs, Badge } from "antd-mobile";
 import { Rate } from 'antd';
 const tabs = [
   { title: <Badge>产品详情</Badge> },
