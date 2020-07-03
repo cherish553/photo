@@ -12,6 +12,7 @@
     height: 100px;
 
     &Back {
+        width: 15px;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -27,7 +28,11 @@
     height: 120px;
     margin-top: 20px;
     background-color: #fff;
-
+    &Back{
+        width: 15px;
+        transform: rotate(180deg);
+        display: block;
+    }
     &Icon {
         width: 32px;
     }
@@ -173,8 +178,7 @@
         @include flex(flex-start);
 
         img {
-            width: 80px;
-            height: 80px;
+            width: 15px;
         }
 
         &Inner {

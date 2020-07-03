@@ -2,13 +2,11 @@ import React from "react";
 import style from "./index.module.scss";
 import { Progress } from "antd-mobile";
 import { Rate } from "antd";
+import TopTitle from "@/components/topTitle";
 export default function printDeaitalComment() {
   return (
     <div>
-      <div className={style.title}>
-        <div className={style.titleBack}>{"<"}</div>
-        商品评价
-      </div>
+      <TopTitle title="商品评价" />
       <div className={style.rate}>
         <div className={style.rateLeft}>
           <div className={style.rateLeftScore}>4.8</div>

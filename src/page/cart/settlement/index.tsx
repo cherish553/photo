@@ -2,13 +2,12 @@ import React from "react";
 import style from "./index.module.scss";
 import address from "@static/cart/address.png";
 import payMethod from "@static/cart/payMethod.png";
+import TopTitle from "@/components/topTitle";
+import back from "@static/common/back.png";
 export default function Settlement() {
   return (
     <div>
-      <div className={style.title}>
-        <div className={style.titleBack}>{"<"}</div>
-        结算
-      </div>
+      <TopTitle title="结算" />
       <div className={style.address}>
         <div className={style.left}>
           <img className={style.addressIcon} src={address} alt="" />
@@ -21,11 +20,11 @@ export default function Settlement() {
             </div>
           </div>
         </div>
-        <div className={style.addressBack}>{">"}</div>
+        <img className={style.addressBack} src={back} alt="" />
       </div>
       <div className={style.good}>
         <div className={style.goodTop}>
-          <img className={style.goodTopImg} src="" alt="" />
+          <img className={style.goodTopImg} src='' alt="" />
           <div className={style.goodTopDetail}>
             <div>手账·照片·周台历</div>
             <div>商品标题</div>
@@ -70,7 +69,7 @@ export default function Settlement() {
             <p>推荐已在微信中绑定银行卡的用户使用</p>
           </div>
         </div>
-        <div>{">"}</div>
+        <img src={back} className='go' alt=""/>
       </div>
       <div className={style.pay}>
         <div className={style.payLeft}>
