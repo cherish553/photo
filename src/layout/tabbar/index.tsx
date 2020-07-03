@@ -5,6 +5,9 @@ import index from "@/page/index";
 import print from "@/page/print";
 import show from "@/page/show";
 import user from "@/page/user";
+import works from "@/page/user/works";
+import Coupon from "@/page/user/coupon";
+
 import cart from "@/page/cart";
 import settlement from "@/page/cart/settlement";
 import address from "@/page/cart/address";
@@ -48,7 +51,7 @@ const Tabbar = (props: RouteComponentProps) => {
     <div className={classnames("h100", style.relate)}>
       <div className={style.main}>
         <Switch>
-          <Route strict exact path="/address" component={index} />,
+          <Route strict exact path="/coupon" component={index} />,
           <Route strict exact path="/print" component={print} />,
           <Route strict exact path="/show" component={show} />,
           <Route strict exact path="/cart" component={cart} />,
@@ -62,7 +65,9 @@ const Tabbar = (props: RouteComponentProps) => {
           />
           ,
           <Route strict exact path="/settlement" component={settlement} />,
-          <Route strict exact path="/" component={address} />,
+          <Route strict exact path="/address" component={address} />,
+          <Route strict exact path="/works" component={works} />,
+          <Route strict exact path="/" component={Coupon} />,
         </Switch>
       </div>
       {showTabbar && (

@@ -1,0 +1,67 @@
+@import '@/style/index.scss';
+
+.list {
+    &Card {
+        @include flex;
+        width: 670px;
+        height: 200px;
+        margin: 20px auto 0;
+
+
+        &Left {
+            @include flex(center);
+            flex-direction: column;
+            text-align: center;
+            flex-shrink: 0;
+            height: 100%;
+            width: 250px;
+            background-image: url('../../../static/user/coupon/new.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: #FFFFFF;
+            font-size: 24px;
+
+            >:nth-child(1) {
+                font-size: 40px;
+            }
+        }
+
+        &Detail {
+            flex: 1;
+            height: 100%;
+            box-shadow: 10px 10px 40px rgba(136, 136, 136, 0.16);
+            border-radius: 20px;
+            background-color: #fff;
+            font-size: 24px;
+            color: #888888;
+
+            &Top {
+                @include borderBox(30px 20px 0);
+                height: 132px;
+
+                >:nth-child(2) {
+                    margin-top: 26px;
+                }
+            }
+
+            &Bottom {
+                height: 70px;
+                box-sizing: border-box;
+                border-top: 2px dashed #707070;
+                @include flex;
+                &Btn{
+                    text-align: center;
+                    background-color: #E52611;
+                    border-radius:26px;
+                    color: white;
+                    width: 120px;
+                    height: 50px;
+                    line-height: 50px;
+                    margin-left: 290px;
+                    font-size:24px;
+
+                }
+            }
+        }
+    }
+}

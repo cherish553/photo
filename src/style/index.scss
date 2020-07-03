@@ -10,9 +10,9 @@
     padding: $padding
 }
 
-@mixin column {
+@mixin column($value:center) {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: $value;
     align-items: flex-start
 }
