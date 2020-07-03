@@ -2,11 +2,15 @@ import React, { useState, useEffect } from "react";
 import style from "./index.module.scss";
 import { Route, Switch } from "react-router-dom";
 import index from "@/page/index";
+
 import print from "@/page/print";
+
 import show from "@/page/show";
+
 import user from "@/page/user";
 import works from "@/page/user/works";
 import Coupon from "@/page/user/coupon";
+import balance from "@/page/user/balance";
 
 import cart from "@/page/cart";
 import settlement from "@/page/cart/settlement";
@@ -51,7 +55,7 @@ const Tabbar = (props: RouteComponentProps) => {
     <div className={classnames("h100", style.relate)}>
       <div className={style.main}>
         <Switch>
-          <Route strict exact path="/coupon" component={index} />,
+          <Route strict exact path="/balance" component={index} />,
           <Route strict exact path="/print" component={print} />,
           <Route strict exact path="/show" component={show} />,
           <Route strict exact path="/cart" component={cart} />,
@@ -67,7 +71,8 @@ const Tabbar = (props: RouteComponentProps) => {
           <Route strict exact path="/settlement" component={settlement} />,
           <Route strict exact path="/address" component={address} />,
           <Route strict exact path="/works" component={works} />,
-          <Route strict exact path="/" component={Coupon} />,
+          <Route strict exact path="/Coupon" component={Coupon} />,
+          <Route strict exact path="/" component={balance} />,
         </Switch>
       </div>
       {showTabbar && (
