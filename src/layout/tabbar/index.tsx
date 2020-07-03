@@ -11,6 +11,7 @@ import user from "@/page/user";
 import works from "@/page/user/works";
 import Coupon from "@/page/user/coupon";
 import balance from "@/page/user/balance";
+import history from "@/page/user/balance/history";
 
 import cart from "@/page/cart";
 import settlement from "@/page/cart/settlement";
@@ -55,7 +56,7 @@ const Tabbar = (props: RouteComponentProps) => {
     <div className={classnames("h100", style.relate)}>
       <div className={style.main}>
         <Switch>
-          <Route strict exact path="/balance" component={index} />,
+          <Route strict exact path="/history" component={index} />,
           <Route strict exact path="/print" component={print} />,
           <Route strict exact path="/show" component={show} />,
           <Route strict exact path="/cart" component={cart} />,
@@ -72,7 +73,8 @@ const Tabbar = (props: RouteComponentProps) => {
           <Route strict exact path="/address" component={address} />,
           <Route strict exact path="/works" component={works} />,
           <Route strict exact path="/Coupon" component={Coupon} />,
-          <Route strict exact path="/" component={balance} />,
+          <Route strict exact path="/balance" component={balance} />,
+          <Route strict exact path="/" component={history} />,
         </Switch>
       </div>
       {showTabbar && (
