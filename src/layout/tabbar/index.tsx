@@ -17,6 +17,7 @@ import apply from "@/page/user/balance/apply";
 import invite from "@/page/user/invite";
 import order from "@/page/user/order";
 import afterSale from "@/page/user/afterSale";
+import book from "@/page/user/book";
 
 
 import cart from "@/page/cart";
@@ -62,7 +63,7 @@ const Tabbar = (props: RouteComponentProps) => {
     <div className={classnames("h100", style.relate)}>
       <div className={style.main}>
         <Switch>
-          <Route strict exact path="/afterSale" component={index} />,
+          <Route strict exact path="/book" component={index} />,
           <Route strict exact path="/print" component={print} />,
           <Route strict exact path="/show" component={show} />,
           <Route strict exact path="/cart" component={cart} />,
@@ -85,7 +86,9 @@ const Tabbar = (props: RouteComponentProps) => {
           <Route strict exact path="/apply" component={apply} />,
           <Route strict exact path="/invite" component={invite} />,
           <Route strict exact path="/order" component={order} />,
-          <Route strict exact path="/" component={afterSale} />,
+          <Route strict exact path="/afterSale" component={afterSale} />,
+          <Route strict exact path="/" component={book} />,
+          
           
         </Switch>
       </div>
