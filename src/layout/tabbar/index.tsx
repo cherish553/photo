@@ -63,7 +63,7 @@ const Tabbar = (props: RouteComponentProps) => {
     <div className={classnames("h100", style.relate)}>
       <div className={style.main}>
         <Switch>
-          <Route strict exact path="/robot" component={index} />,
+          <Route strict exact path="/" component={index} />,
           <Route strict exact path="/print" component={print} />,
           <Route strict exact path="/show" component={show} />,
           <Route strict exact path="/cart" component={cart} />,
@@ -88,7 +88,7 @@ const Tabbar = (props: RouteComponentProps) => {
           <Route strict exact path="/order" component={order} />,
           <Route strict exact path="/afterSale" component={afterSale} />,
           <Route strict exact path="/book" component={book} />,
-          <Route strict exact path="/" component={robot} />,
+          <Route strict exact path="/robot" component={robot} />,
         </Switch>
       </div>
       {showTabbar && (

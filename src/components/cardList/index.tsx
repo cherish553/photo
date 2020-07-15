@@ -1,29 +1,24 @@
 import React from "react";
 import style from "./index.module.scss";
-interface Props{
-    
+import { HotList } from "@api/index/api";
+interface Props {
+  dataList: HotList[];
 }
-export default function CardList(props:Props) {
+export default function CardList(props: Props) {
+  const { dataList } = props;
   return (
     <div>
-      {[1, 2, 3].map((item) => (
-        <div key={item} className={style.col}>
-          <div className={style.card}>
-            <img src="" alt="" />
+      <div className={style.col}>
+        {dataList.map((item) => (
+          <div key={item.id} className={style.card}>
+            <img src={item.index_img} alt="" />
             <div className={style.ml20}>
-              <p className={style.name}>微信书</p>
-              <p className={style.price}>￥0.7/页起</p>
+              <p className={style.name}>{item.name}</p>
+              <p className={style.price}>￥{item.min_price}/页起</p>
             </div>
           </div>
-          <div className={style.card}>
-            <img src="" alt="" />
-            <div className={style.ml20}>
-              <p className={style.name}>微信书</p>
-              <p className={style.price}>￥0.7/页起</p>
-            </div>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

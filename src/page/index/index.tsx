@@ -1,14 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./index.module.scss";
 import { Carousel, WingBlank } from "antd-mobile";
 import Logo from "@/layout/logo";
 import classnames from "classnames";
-import CardList from '@/components/cardList'
+import CardList from "@/components/cardList";
+import { getIndex as GetIndex } from "@api/index";
+import { BannerList, HotList } from "@api/index/api";
 export default function Index() {
-  const [data] = useState(["1", "2", "3"]);
   // const [imgHeight, setImgHeight] = useState<number | string>(176);
   const [slideIndex, setSlideIndex] = useState<number>(0);
-
+  const [bannerList, setBannerList] = useState<BannerList[]>([]);
+  const [hotList, setHotList] = useState<HotList[]>([]);
+  useEffect(() => {
+    getIndex();
+  }, []);
+  const getIndex = async () => {
+    let { bannerList, hotList } = await GetIndex();
+    setBannerList(bannerList);
+    setHotList(hotList);
+  };
   return (
     <div>
       <Logo />
@@ -23,13 +33,13 @@ export default function Index() {
           infinite
           afterChange={(now) => {
             setSlideIndex(now);
-            console.log(now);
           }}
         >
-          {data.map((val, index) => (
-            <div className={style.h400} key={val}>
+          {bannerList.map((item, index) => (
+            <div className={style.h400} key={item.id}>
               <img
                 alt=""
+                src={item.img_url}
                 className={classnames(slideIndex === index ? style.active : "")}
               />
             </div>
@@ -41,7 +51,7 @@ export default function Index() {
         <span></span>
       </div>
       <div className={style.w100}>
-        <CardList/>
+        <CardList dataList={hotList} />
       </div>
     </div>
   );

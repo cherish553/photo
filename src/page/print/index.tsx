@@ -4,6 +4,7 @@ import classnames from "classnames";
 import Logo from "@/layout/logo";
 import search from "@static/print/search.png";
 import CardList from "@/components/cardList";
+import {getGoodsList as GetGoodsList} from '@api/print'
 export default function Print() {
   const inputRef = useRef<any>();
   const [selectIndex, setSelectIndex] = useState(0);
@@ -18,6 +19,13 @@ export default function Print() {
       inputRef.current.focus();
     }
   }, [tabs]);
+  useEffect(()=>{
+    getGoodsList()
+  },[])
+  const getGoodsList=async ()=>{
+    const data = await GetGoodsList()
+    console.log(data)
+  }
   const changeSearch = () => {};
   return (
     <div>
@@ -69,7 +77,7 @@ export default function Print() {
         </div>
       )}
       <div className={style.cardList}>
-        <CardList />
+        {/* <CardList /> */}
       </div>
     </div>
   );

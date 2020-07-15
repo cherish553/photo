@@ -68,7 +68,7 @@ export default function A() {
         </div>
       </div>
       <div>
-        <CardlList />
+        {/* <CardlList /> */}
       </div>
       <Modal ref={Ref}></Modal>
     </div>
