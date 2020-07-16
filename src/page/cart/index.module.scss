@@ -1,5 +1,9 @@
 @import '@/style/index.scss';
 
+.CartCard:last-child {
+    margin-bottom: 20px;
+}
+
 .cart {
 
     height: 100%;
@@ -15,7 +19,6 @@
         .card {
             overflow: scroll;
             flex: 1;
-            padding-bottom: 20px;
         }
 
         .pay {
@@ -34,7 +37,7 @@
                     margin-left: 10px;
                 }
 
-                21px        .sum {
+                .sum {
                     color: #020202;
                     font-size: 28px;
                     margin-left: 20px;

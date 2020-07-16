@@ -2,7 +2,7 @@ import React from "react";
 import style from "./index.module.scss";
 import { HotList } from "@api/index/api";
 interface Props {
-  dataList: HotList[];
+  dataList: any[];
 }
 export default function CardList(props: Props) {
   const { dataList } = props;

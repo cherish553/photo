@@ -1,7 +1,10 @@
 import { get, post, del } from '@axios'
-import { IndexData } from './api'
-export const getGoodsList = ():Promise<IndexData> => get(`goodsList`)
+import { GoodsListData, GoodsListPageParam,GoodsList } from './api'
+// 印品列表页接口
+export const getGoodsList = (): Promise<GoodsListData[]> => get(`goodsList`)
 
+// 印品列表分页 
+export const getGoodsListPage = (data: GoodsListPageParam): Promise<GoodsList> => get(`goodsListPage`, data)
 // 获取优惠券列表
 // export const getCouponList = ({ page }: { page: number }): (Promise<Array<CouponDetail> | []>) =>
     // get<CouponData | false>('admin/couponList', { page })

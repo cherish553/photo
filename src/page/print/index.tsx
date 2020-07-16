@@ -4,45 +4,99 @@ import classnames from "classnames";
 import Logo from "@/layout/logo";
 import search from "@static/print/search.png";
 import CardList from "@/components/cardList";
-import {getGoodsList as GetGoodsList} from '@api/print'
+import { ListView } from "antd-mobile";
+import {
+  getGoodsList as GetGoodsList,
+  getGoodsListPage as GetGoodsListPage,
+} from "@api/print";
+import {
+  GoodsListData,
+  GoodsListPageParam,
+  GoodsList,
+  DataDetail,
+} from "@api/print/api";
+const ds = new ListView.DataSource({
+  rowHasChanged: () => true,
+});
 export default function Print() {
+  const [dataSource, setDataSource] = useState(ds);
+  useEffect(() => {
+    setDataSource(dataSource.cloneWithRows([]));
+  }, []);
+  function onRequestMore() {
+    console.log(123);
+    // let newDate = [...data, ...data];
+    // setDataSource(dataSource.cloneWithRows(newDate));
+  }
+  const [flag, setFlag] = useState(true);
   const inputRef = useRef<any>();
+  const [formData, setFormData] = useState<GoodsListPageParam>({
+    page: 1,
+    size: 20,
+    class_id: "",
+  });
   const [selectIndex, setSelectIndex] = useState(0);
   const [tabs, setTabs] = useState(true);
   const [searchValue, setSearchValue] = useState("");
+  const [dataList, setDataList] = useState<DataDetail[]>([]);
   const toggleTabs = (e: Event) => {
     window.removeEventListener("click", toggleTabs);
     setTabs(true);
   };
+  const [classList, setClassList] = useState<GoodsListData[]>([]);
   useEffect(() => {
     if (inputRef.current && !tabs) {
       inputRef.current.focus();
     }
   }, [tabs]);
-  useEffect(()=>{
-    getGoodsList()
-  },[])
-  const getGoodsList=async ()=>{
-    const data = await GetGoodsList()
-    console.log(data)
+  useEffect(() => {
+    getGoodsList();
+  }, []);
+  const getGoodsListPage = async (class_id?: string) => {
+    const data = await GetGoodsListPage({
+      ...formData,
+      class_id: class_id || formData.class_id,
+    });
+    const { current_page, last_page, data: dataList } = data;
+    if (current_page === last_page) setFlag(false);
+    setDataSource(dataSource.cloneWithRows(dataList));
+    console.log(dataList)
+    setDataList(dataList);
+  };
+  const getGoodsList = async () => {
+    const data = await GetGoodsList();
+    setClassList(data);
+    const {
+      class_id,
+      goodsList: { current_page, last_page },
+    } = data[0];
+    setFormData({ ...formData, class_id });
+    if (current_page === last_page) setFlag(false);
+    getGoodsListPage(class_id);
+    return true;
+  };
+  function renderItem(item: any, sectionID: any, rowID: any) {
+    return (
+      <CardList dataList={dataList} /> 
+    );
   }
   const changeSearch = () => {};
   return (
-    <div>
+    <div className={style.container}>
       <Logo></Logo>
       {(tabs && (
         <div className={style["search-tabs"]}>
           <div className={style.tabs}>
-            {Array.from({ length: 20 }).map((_item, index) => (
+            {classList.map((item, index) => (
               <div
-                key={index}
+                key={item.class_id}
                 onClick={() => setSelectIndex(index)}
                 className={classnames(
                   style["tabs-detail"],
                   selectIndex === index ? style.active : ""
                 )}
               >
-                {index}
+                {item.name}
               </div>
             ))}
           </div>
@@ -77,7 +131,21 @@ export default function Print() {
         </div>
       )}
       <div className={style.cardList}>
-        {/* <CardList /> */}
+        <ListView
+          dataSource={dataSource}
+          renderRow={renderItem}
+          initialListSize={20}
+          pageSize={20}
+          onEndReached={(event) => {
+            onRequestMore();
+          }}
+          onEndReachedThreshold={10}
+          style={{
+            height: "100%",
+            background: "#EEEEEE",
+          }}
+        />
+        {/* <CardList dataList={dataList} /> */}
       </div>
     </div>
   );
