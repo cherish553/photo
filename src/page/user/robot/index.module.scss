@@ -1,0 +1,107 @@
+@import '@/style/index.scss';
+
+.circle {
+    @include flex(center);
+    position: absolute;
+    right: 40px;
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 50%;
+
+    img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+
+.contact {
+    bottom: 80px;
+}
+
+.card {
+    @include flex;
+    box-sizing: border-box;
+    padding: 0 40px 0 30px;
+    width: 600px;
+    height: 200px;
+    box-shadow: 10px 10px 40px rgba(136, 136, 136, 0.16);
+    border-radius: 20px;
+    background-color: #fff;
+    margin: 30px auto 0;
+
+    &Detail {
+        >:nth-child(1) {
+            color: #E52611;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        >:nth-child(2) {
+            color: #888888;
+            font-size: 28px
+        }
+    }
+
+    img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+.modal {
+    width: 600px;
+    height: 1000px;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding-top: 90px;
+    &Inner {
+        >:nth-child(1) {
+            font-size: 32px;
+            font-family: Source Han Sans SC;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        img {
+            display: block;
+            width: 400px;
+            height: 400px;
+            background-color: skyblue;
+            margin: 44px auto 0;
+        }
+
+        >:nth-child(3) {
+            text-align: center;
+            color: #888888;
+            font-size: 28px;
+            font-family: Source Han Sans SC;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        >:last-child {
+            width: 520px;
+            height: 174px;
+            border-radius: 20px;
+            background-color: #E52611;
+            margin: 70px auto 0;
+            color: #FFFFFF;
+            box-sizing: border-box;
+            padding-top: 26px;
+            >:nth-child(1) {
+
+                font-size: 28px;
+                font-family: Source Han Sans SC;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            >:last-child {
+                font-size: 24px
+            }
+        }
+    }
+}

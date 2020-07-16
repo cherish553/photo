@@ -1,0 +1,48 @@
+@import '@/style/index.scss';
+
+.card {
+    @include borderBox(0 20px);
+    width: 670px;
+    height: 300px;
+    margin: 20px auto 0;
+    background-color: #fff;
+
+    &Status {
+        @include flex;
+        font-size: 28px;
+        height: 80px;
+        border-bottom: 2px solid #EEEEEE;
+
+        >:nth-child(1) {
+            color: #888888
+        }
+
+        >:nth-child(2) {
+            color: #E52611
+        }
+    }
+
+    &Detail {
+        @include flex(flex-start);
+        margin-top: 20px;
+
+        img {
+            display: block;
+            background-color: skyblue;
+            width: 160px;
+            height: 160px;
+        }
+
+        &Right {
+            @include column(space-between);
+            color: #020202;
+            height: 140px;
+            margin-left: 18px;
+
+            >:last-child {
+                color: #E52611;
+                font-size: 28px;
+            }
+        }
+    }
+}

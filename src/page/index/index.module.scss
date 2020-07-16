@@ -1,0 +1,122 @@
+@import '@/style/index.scss';
+
+.header {
+    width: 750px;
+    height: 100px;
+    background-color: red;
+}
+
+.aaa {
+    width: 50%;
+    height: 100px;
+    background-color: red;
+}
+
+.space-carousel {
+    padding: 16px;
+    // background: #DEF1E5;
+    overflow: hidden;
+}
+
+.h400 {
+    height: 550px;
+
+    img {
+        width: 100%;
+        display: "block";
+        position: "relative";
+        background-color: skyblue;
+        box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.2);
+        height: 500px;
+    }
+
+    .active {
+        height: 550px;
+    }
+}
+
+.h550 {
+    height: 600px;
+}
+
+$heihgt:50px;
+
+.title {
+    height: $heihgt;
+    line-height: $heihgt;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 22px;
+
+    p {
+        left: 0;
+        right: 0;
+
+        margin: auto;
+        text-align: center;
+
+
+
+        z-index: 2;
+        position: absolute;
+        font-size: 32px;
+        font-family: Source Han Sans SC;
+        font-weight: bold;
+        color: black;
+    }
+
+    span {
+        // content: "";
+        width: 160px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 4px;
+        margin: auto;
+        height: 16px;
+        background-color: #FF7B6D;
+        z-index: 1;
+    }
+}
+
+
+.w100 {
+    width: 100%;
+}
+
+.col {
+    @include flex;
+    @include borderBox(0 40px);
+    margin-bottom: 30px;
+
+    .card {
+        width: 320px;
+        height: 360px;
+        box-shadow: 0px 10px 40px rgba(136, 136, 136, 0.3);
+        border-radius: 20px;
+
+        img {
+            border-radius: 20px 20px 0 0;
+            display: block;
+            width: 320px;
+            height: 240px;
+            background-color: skyblue;
+        }
+
+        .ml20 {
+            margin-left: 20px;
+
+            .name {
+                color: #020202;
+                font-size: 28px;
+                margin-top: 20px;
+            }
+            .price {
+                color: #E52611;
+                font-size: 24px;
+                margin-top: 2px;
+            }
+        }
+    }
+}

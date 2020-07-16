@@ -1,0 +1,32 @@
+@import '@/style/index.scss';
+
+.list {
+    @include flex;
+    @include borderBox(0 20px);
+    width: 670px;
+    background-color: white;
+    height: 80px;
+}
+
+.left {
+    @include flex(flex-start);
+
+    img {
+        width: 40px;
+        height: 40px;
+        display: block;
+    }
+
+    p {
+        font-size: 24px;
+        margin-left: 20px;
+    }
+
+}
+
+.line {
+    width: 630px;
+    height: 4px;
+    background-color: #EEEEEE;
+    margin: 0 auto;
+}

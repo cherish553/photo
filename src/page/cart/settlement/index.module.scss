@@ -1,0 +1,233 @@
+@import '@/style/index.scss';
+
+.title {
+    @include flex(center);
+    position: relative;
+    width: 100%;
+    text-align: center;
+    color: #000000;
+    font-size: 36px;
+    font-weight: bold;
+    background-color: #fff;
+    height: 100px;
+
+    &Back {
+        width: 15px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 50px;
+        color: #E52611;
+        left: 40px;
+    }
+}
+
+.address {
+    @include flex;
+    @include borderBox(0 40px);
+    height: 120px;
+    margin-top: 20px;
+    background-color: #fff;
+    &Back{
+        width: 15px;
+        transform: rotate(180deg);
+        display: block;
+    }
+    &Icon {
+        width: 32px;
+    }
+
+    &Inner {
+        margin-left: 20px;
+        font-size: 24px;
+
+        &User {}
+
+        &Detail {
+            color: #888888
+        }
+    }
+
+    .left {
+        @include flex(flex-start);
+
+    }
+}
+
+.good {
+    @include borderBox(32px 40px 28px);
+    @include flex(flex-start, flex-start);
+    flex-direction: column;
+    height: 400px;
+    margin-top: 20px;
+    background-color: #fff;
+
+    &Top {
+        @include flex(flex-start);
+        width: 100%;
+
+        &Img {
+            width: 180px;
+            height: 180px;
+            background-color: skyblue;
+        }
+
+        &Detail {
+            height: 100%;
+            flex: 1;
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            >:nth-child(1) {
+                font-size: 28px;
+                color: #020202;
+            }
+
+            >:nth-child(2),
+            >:nth-child(3) {
+                font-size: 24px;
+                color: #888888;
+            }
+
+            >:nth-child(4) {
+                @include flex;
+
+                >:nth-child(1) {
+                    color: #E52611;
+                    font-weight: bold;
+                }
+            }
+        }
+
+
+    }
+
+    &Comment {
+        @include flex(flex-start);
+        @include borderBox();
+        color: #020202;
+        margin-top: 20px;
+        font-size: 24px;
+
+        p {
+            width: 72px;
+        }
+
+        input {
+            flex: 1;
+            border: 2px solid #BBBBBB;
+            height: 60px;
+            box-sizing: border-box;
+            padding-left: 20px;
+            margin-left: 10px;
+            border-radius: 6px;
+        }
+    }
+
+    &Pay {
+        @include borderBox;
+        @include flex;
+        margin-top: 60px;
+
+        >:nth-child(1) {
+            color: #020202;
+            font-size: 24px;
+        }
+
+        >:nth-child(2) {
+            color: #E52611;
+            font-size: 2;
+        }
+    }
+}
+
+.list {
+    @include borderBox(0 40px);
+    background-color: #fff;
+    margin-top: 20px;
+
+    &Card {
+        @include flex;
+        height: 80px;
+
+        >:nth-child(1) {
+            color: #020202;
+            font-size: 24px;
+        }
+
+        >:nth-child(2) {
+            color: #888888
+        }
+    }
+
+    &Card+&Card {
+        border-top: 2px solid #EEEEEE;
+    }
+}
+
+.payMethod {
+    @include borderBox(0 40px);
+    @include flex;
+    background-color: #fff;
+    margin-top: 20px;
+    height: 120px;
+
+    &Left {
+        @include flex(flex-start);
+
+        img {
+            width: 15px;
+        }
+
+        &Inner {
+            @include flex(space-between, flex-start);
+            flex-direction: column;
+            height: 80px;
+            margin-left: 20px;
+
+            >:nth-child(1) {
+                color: #020202
+            }
+
+            >:nth-child(2) {
+                color: #888888
+            }
+        }
+    }
+}
+
+.pay {
+    @include borderBox(0 40px);
+    @include flex;
+    height: 120px;
+    margin-top: 64px;
+    background-color: #fff;
+
+    &Left {
+        @include flex(flex-start);
+
+        >:nth-child(1) {
+            color: #020202;
+            font-size: 28px
+        }
+
+        >:nth-child(2) {
+            margin-left: 20px;
+            font-size: 28px;
+            color: #E52611;
+        }
+    }
+
+    &Btn {
+        width: 200px;
+        height: 80px;
+        background-color: #E52611;
+        border-radius: 40px;
+        line-height: 80px;
+        text-align: center;
+        font-size: 28px;
+        color: white;
+    }
+}

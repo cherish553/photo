@@ -1,0 +1,58 @@
+@import '@/style/index.scss';
+
+.card {
+    width: 670px;
+    height: 240px;
+    background: linear-gradient(134deg, rgba(229, 38, 17, 1) 0%, rgba(255, 123, 109, 1) 100%);
+    box-shadow: 10px 10px 40px rgba(136, 136, 136, 0.16);
+    border-radius: 20px;
+    margin: 20px auto;
+    @include flex(flex-start);
+
+    .cardLeft,
+    .cardRight {
+        color: white;
+
+        >:nth-child(1) {
+            font-size: 32px;
+        }
+
+        >:nth-child(2) {
+            font-size: 60px;
+        }
+    }
+
+    .cardLeft {
+        margin-left: 20px;
+    }
+
+    .cardRight {
+        margin-left: 120px;
+    }
+}
+
+.code {
+    @include borderBox(0 40px);
+    @include flex;
+    font-size: 24px;
+    height: 80px;
+    margin-top: 20px;
+    background-color: #fff;
+    >:nth-child(1) {
+        color: #020202;
+
+    }
+
+    >:nth-child(1) {
+        color: #888888;
+    }
+}
+.share{
+    @include borderBox(0 40px);
+    @include flex;
+    font-size: 24px;
+    color: #020202;
+    height: 80px;
+    background-color: #fff;
+
+}

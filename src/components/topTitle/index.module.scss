@@ -1,0 +1,21 @@
+@import '@/style/index.scss';
+
+.title {
+    @include flex(center);
+    position: relative;
+    width: 100%;
+    text-align: center;
+    color: #000000;
+    font-size: 36px;
+    font-weight: bold;
+    background-color: #fff;
+    height: 100px;
+
+    &Back {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 15px;
+        left: 40px;
+    }
+}

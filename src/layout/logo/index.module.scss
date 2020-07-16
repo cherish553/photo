@@ -1,0 +1,14 @@
+@import '@/style/index.scss';
+
+.logo {
+    display: block;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.white {
+    @include borderBox(16px 0);
+    margin: 0 auto;
+    height: 100px;
+    background-color: #fff;
+}

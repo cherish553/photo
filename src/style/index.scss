@@ -1,0 +1,18 @@
+@mixin flex($value: space-between, $align:center) {
+    display: flex;
+    justify-content: $value;
+    align-items: $align;
+}
+
+@mixin borderBox($padding:0) {
+    width: 100%;
+    box-sizing: border-box;
+    padding: $padding
+}
+
+@mixin column($value:center) {
+    display: flex;
+    flex-direction: column;
+    justify-content: $value;
+    align-items: flex-start
+}
