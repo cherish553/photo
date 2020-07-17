@@ -25,10 +25,7 @@ import settlement from "@/page/cart/settlement";
 import address from "@/page/cart/address";
 import printDetail from "@/page/print/detail";
 import printDetailComment from "@/page/print/detail/comment";
-<<<<<<< HEAD
 import login from "@/page/login";
-=======
->>>>>>> eb4b07844ca16a0dea4cb2dd813326cbc85df323
 
 import { TabBar } from "antd-mobile";
 import classnames from "classnames";
@@ -96,10 +93,7 @@ const Tabbar = (props: RouteComponentProps) => {
           <Route strict exact path="/afterSale" component={afterSale} />,
           <Route strict exact path="/book" component={book} />,
           <Route strict exact path="/robot" component={robot} />,
-<<<<<<< HEAD
           <Route strict exact path="/login" component={login} />,
-=======
->>>>>>> eb4b07844ca16a0dea4cb2dd813326cbc85df323
         </Switch>
       </div>
       {showTabbar && (
