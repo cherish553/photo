@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
+=======
+import React from "react";
+>>>>>>> eb4b07844ca16a0dea4cb2dd813326cbc85df323
 import style from "./index.module.scss";
 import Logo from "@/layout/logo";
 import pay from "@static/user/pay.png";
