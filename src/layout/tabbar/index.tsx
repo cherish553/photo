@@ -25,6 +25,7 @@ import settlement from "@/page/cart/settlement";
 import address from "@/page/cart/address";
 import printDetail from "@/page/print/detail";
 import printDetailComment from "@/page/print/detail/comment";
+import login from "@/page/login";
 
 import { TabBar } from "antd-mobile";
 import classnames from "classnames";
@@ -43,12 +44,12 @@ type SelectStatus = "/" | "cart" | "user" | "print" | "show";
 const Tabbar = (props: RouteComponentProps) => {
   const [select, setSelect] = useState<SelectStatus>("/");
   useEffect(() => {
-    setSelect("print");
+    // setSelect("print");
   }, []);
   const [showTabbar, setShowTabbar] = useState(true);
-  useEffect(() => {
-    props.history.push(select);
-  }, [props.history, select]);
+  // useEffect(() => {
+  //   props.history.push(select);
+  // }, [props.history, select]);
 
   useEffect(() => {
     const pathname = props.history.location.pathname;
@@ -92,6 +93,7 @@ const Tabbar = (props: RouteComponentProps) => {
           <Route strict exact path="/afterSale" component={afterSale} />,
           <Route strict exact path="/book" component={book} />,
           <Route strict exact path="/robot" component={robot} />,
+          <Route strict exact path="/login" component={login} />,
         </Switch>
       </div>
       {showTabbar && (

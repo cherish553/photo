@@ -3,16 +3,43 @@ import style from "./index.module.scss";
 import { Carousel, Tabs, Badge } from "antd-mobile";
 import { Rate } from "antd";
 import back from "@static/common/back.png";
-
+import { query, judgeSearchData } from "@/util/commonMethods";
+import { getGoodsDetail as GetGoodsDetail } from "@api/print";
+import { GoodsDetailData } from "@api/print/api";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 const tabs = [
   { title: <Badge>产品详情</Badge> },
   { title: <Badge>制作服务</Badge> },
 ];
-export default function Print() {
-  const [dataList] = useState([]);
+function Print(props: RouteComponentProps) {
+  const [dataDetail, setDataDetail] = useState<GoodsDetailData>({
+    desc: {
+      desc: "",
+      service_introduction: "",
+    },
+    id: "",
+    img_list: [],
+    spec_list: [],
+    index_img: "",
+    is_recommend: 0,
+    min_price: "",
+    name: "",
+  });
+  useEffect(() => {
+    const data = judgeSearchData<Id>(props.location.search, "id");
+    console.log(data);
+    if (typeof data === "string") {
+      getGoodsDetail(data);
+    }
+  }, []);
+  const getGoodsDetail = async (id: string) => {
+    const data = await GetGoodsDetail({ id });
+    setDataDetail(data);
+  };
   return (
     <div>
       <Carousel
+        className={style.bannerImg}
         dotStyle={{
           right: "10px",
           background: "#FFFFFF",
@@ -26,16 +53,23 @@ export default function Print() {
         beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
         afterChange={(index) => console.log("slide to", index)}
       >
-        {[1, 2, 3].map((item) => (
-          <img className={style.bannerImg} src="" alt="" />
+        {dataDetail.img_list.map((item) => (
+          <img
+            key={item.id}
+            className={style.bannerImg}
+            src={item.img_url}
+            alt=""
+          />
         ))}
       </Carousel>
       <div className={style.introduce}>
-        <div className={style.introduceName}>手账·照片·周台历</div>
+        <div className={style.introduceName}>{dataDetail.name}</div>
         <div className={style.introduceDescribe}>
           描述描述描述描述描述描述描述描述
         </div>
-        <div className={style.introducePrice}>￥88.00/本起</div>
+        <div className={style.introducePrice}>
+          ￥{dataDetail.min_price}/本起
+        </div>
         <div className={style.introduceFlex}>
           <div className={style.introduceFlexBtn}>已选</div>
           <div className={style.introduceFlexChoose}>
@@ -47,7 +81,7 @@ export default function Print() {
       <div className={style.userComment}>
         <div className={style.userCommentTitle}>
           <div>用户评价(234)</div>
-         <img src={back} className='go' alt=""/>
+          <img src={back} className="go" alt="" />
         </div>
         <div className={style.userCommentList}>
           <div className={style.userCommentListStar}>
@@ -91,9 +125,10 @@ export default function Print() {
                 height: "150px",
                 backgroundColor: "#fff",
               }}
-            >
-              Content of first tab
-            </div>
+              dangerouslySetInnerHTML={{
+                __html: dataDetail.desc.desc,
+              }}
+            ></div>
             <div
               style={{
                 display: "flex",
@@ -102,16 +137,19 @@ export default function Print() {
                 height: "150px",
                 backgroundColor: "#fff",
               }}
-            >
-              Content of second tab
-            </div>
+              dangerouslySetInnerHTML={{
+                __html: dataDetail.desc.service_introduction,
+              }}
+            ></div>
           </Tabs>
         </div>
       </div>
       <div className={style.pay}>
-        <div className={style.payPrice}>￥88.00</div>
+        <div className={style.payPrice}>￥{dataDetail.min_price}</div>
         <div className={style.payBtn}>开始制作</div>
       </div>
     </div>
   );
 }
+
+export default withRouter(Print);

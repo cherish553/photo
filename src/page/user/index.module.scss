@@ -55,7 +55,7 @@
         }
 
         .commission {
-            margin-top: 10px;
+            // margin-top: 10px;
         }
 
         .vertical {
@@ -75,7 +75,7 @@
         }
 
         .my {
-            margin-top: 8px;
+            // margin-top: 8px;
             font-size: 24px;
             font-family: Source Han Sans SC;
             font-weight: 400;
@@ -109,6 +109,7 @@
             @include flex(flex-end);
 
             .search {
+                margin-right: 10px;
                 color: #888888;
 
             }

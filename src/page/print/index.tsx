@@ -21,7 +21,7 @@ const ds = new ListView.DataSource({
 export default function Print() {
   const [dataSource, setDataSource] = useState(ds);
   useEffect(() => {
-    setDataSource(dataSource.cloneWithRows([]));
+    setDataSource(dataSource.cloneWithRows([0]));
   }, []);
   function onRequestMore() {
     console.log(123);
@@ -59,8 +59,7 @@ export default function Print() {
     });
     const { current_page, last_page, data: dataList } = data;
     if (current_page === last_page) setFlag(false);
-    setDataSource(dataSource.cloneWithRows(dataList));
-    console.log(dataList)
+    // setDataSource(dataSource.cloneWithRows(dataList));
     setDataList(dataList);
   };
   const getGoodsList = async () => {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./index.module.scss";
 import Logo from "@/layout/logo";
 import pay from "@static/user/pay.png";
@@ -14,17 +14,35 @@ import invite from "@static/user/invite.png";
 import address from "@static/user/address.png";
 import setting from "@static/user/setting.png";
 import chat from "@static/user/chat.png";
+import { getUserIndex as GetUserIndex } from "@api/user";
+import { UserIndexData } from "@api/user/api";
 import about from "@static/user/about.png";
-import classnames from 'classnames'
+import classnames from "classnames";
+import back from "@static/common/back.png";
 export default function User() {
+  useEffect(() => {
+    getUserIndex();
+  }, []);
+  const [data, setData] = useState<UserIndexData>({
+    address: "",
+    avatarUrl: "",
+    commission: "",
+    name: "",
+    sex: "",
+    total_commission: "",
+  });
+  const getUserIndex = async () => {
+    const data = await GetUserIndex();
+    setData(data);
+  };
   return (
     <div>
       <Logo />
       <div className={style.introduction}>
-        <img src="" alt="" className={style.avatar} />
+        <img src={data.avatarUrl} alt="" className={style.avatar} />
         <div>
           <div className={style.userName}>
-            <div className={style.name}>Mr.Mao</div>
+            <div className={style.name}>{data.name}</div>
             <div className={style.no}>No.23232333</div>
           </div>
           <div className={style.line}></div>
@@ -35,7 +53,7 @@ export default function User() {
             </div>
             <div className={style.vertical}></div>
             <div className={style.commission}>
-              <div className={style.price}>23.00</div>
+              <div className={style.price}>{data.total_commission}</div>
               <div className={style.my}>我的佣金</div>
             </div>
           </div>
@@ -46,7 +64,7 @@ export default function User() {
           <div className={style.myOrder}>我的订单</div>
           <div className={style.all}>
             <div className={style.search}>查看全部</div>
-            <div className={style.icon}>&gt;</div>
+            <img src={back} className='go' alt=""/>
           </div>
         </div>
         <div className={style.status}>
@@ -75,13 +93,13 @@ export default function User() {
           <List line src={article} inner="我的作品" />
           <List line src={money} inner="我的余额" />
           <List line src={coupon} inner="我的优惠券" />
-          <List  src={invite} inner="邀请有礼" />
+          <List src={invite} inner="邀请有礼" />
         </div>
-        <div className={classnames(style.list,style.mb34)}>
+        <div className={classnames(style.list, style.mb34)}>
           <List line src={address} inner="我的地址" />
           <List line src={setting} inner="设置" />
           <List line src={chat} inner="在线客服" />
-          <List  src={about} inner="关于我们" />
+          <List src={about} inner="关于我们" />
         </div>
       </div>
     </div>

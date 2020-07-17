@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./index.module.scss";
+import back from "@static/common/back.png";
 interface Props {
   src: string;
   inner: string;
@@ -14,7 +15,7 @@ export default function List(props: Props) {
           <img src={src} alt="" />
           <p>{inner}</p>
         </div>
-        <div className={style.right}>&gt;</div>
+        <img src={back} className='go' alt=""/>
       </div>
       {line && <div className={style.line}></div>}
     </div>
