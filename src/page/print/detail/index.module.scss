@@ -72,6 +72,7 @@
         // height: 260px;
         font-size: 24px;
         padding-bottom: 20px;
+
         &Star {
             @include flex(flex-start);
             color: #E52611;
@@ -133,6 +134,7 @@
     width: 750px;
     height: 118px;
     background-color: white;
+
     &Price {
         color: #E52611;
         font-size: 28px;
@@ -149,4 +151,105 @@
         border-radius: 40px;
         color: white;
     }
+}
+
+.modal {
+    padding: 30px;
+
+    &Detail {
+        @include flex(space-between, flex-start);
+
+        &Left {
+            @include flex;
+
+            img {
+                background-color: skyblue;
+                width: 160px;
+                height: 160px;
+            }
+
+            &Inner {
+                height: 140px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-left: 20px;
+                text-align: left;
+
+                :nth-child(1) {
+                    color: #E52611;
+                    font-weight: bold;
+                    font-size: 28px;
+                }
+
+                :nth-child(2) {
+                    color: #888888;
+                    font-size: 24px;
+                }
+
+                :nth-child(3) {
+                    color: #000000;
+                    font-size: 24px;
+                }
+            }
+        }
+
+        &Hide {
+            width: 20px;
+            transform: rotate(270deg);
+        }
+    }
+
+    &Spec {
+
+        margin-left: 0;
+        display: inline;
+        box-sizing: border-box;
+        // width: 40px;
+        // margin-top: 30px;
+        padding: 4px 16px;
+        // height: 40px;
+        line-height: 40px;
+        background-color: #E52611;
+        border-radius: 10px;
+        color: #FFFFFF;
+        font-size: 24px;
+        text-align: center;
+
+        &Detail {
+            @include flex(flex-start);
+            margin-top: 20px;
+
+            >div {
+                padding: 12px 80px;
+                border-radius: 10px;
+                border: 2px solid #888888;
+                color: #888888;
+                font-size: 24px;
+                margin-right: 20px;
+            }
+        }
+    }
+
+    .spec {
+
+        margin-top: 30px;
+        text-align: left;
+    }
+}
+
+.active {
+    border: 2px solid #E52611 !important;
+    color: #E52611 !important;
+}
+
+.btn {
+    border-radius:40px;
+    margin-top: 60px;
+    height: 80px;
+    line-height: 80px;
+    color: white;
+    background:#E52611;
+    opacity: 1;
 }

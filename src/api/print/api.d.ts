@@ -31,9 +31,34 @@ export interface GoodsDetailData {
    is_recommend: 0 | 1
    min_price: string
    name: string
-   spec_list: []
-
+   spec_list: SpecList[]
 }
+export interface GoodsDetailDatas extends GoodsDetailData {
+   compose: Compose
+}
+export interface Compose {
+   'binding': {
+      id: string
+      name: string
+   }[]
+   'paper': {
+      id: string
+      name: string
+   }[]
+   'printing': {
+      id: string
+      name: string
+   }[]
+   'size': {
+      id: string
+      name: string
+   }[]
+   'style': {
+      id: string
+      name: string
+   }[]
+}
+
 export interface Desc {
    desc: string
    service_introduction: string

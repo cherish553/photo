@@ -47,9 +47,9 @@ const Tabbar = (props: RouteComponentProps) => {
     // setSelect("print");
   }, []);
   const [showTabbar, setShowTabbar] = useState(true);
-  // useEffect(() => {
-  //   props.history.push(select);
-  // }, [props.history, select]);
+  useEffect(() => {
+    props.history.push(select);
+  }, [props.history, select]);
 
   useEffect(() => {
     const pathname = props.history.location.pathname;
