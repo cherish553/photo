@@ -5,9 +5,13 @@ import { Rate } from "antd";
 import back from "@static/common/back.png";
 import { query, judgeSearchData } from "@/util/commonMethods";
 import { getGoodsDetail as GetGoodsDetail } from "@api/print";
+import { postAddCart as PostAddCart } from "@api/cart";
+import { CartListParam } from "@api/cart/api";
+
 import { GoodsDetailDatas, Compose } from "@api/print/api";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import classnames from "classnames";
+import { Toast } from "antd-mobile";
 const tabs = [
   { title: <Badge>产品详情</Badge> },
   { title: <Badge>制作服务</Badge> },
@@ -41,6 +45,12 @@ function Print(props: RouteComponentProps) {
       style: [],
     },
   });
+  const [formData, setFormData] = useState<CartListParam>({
+    id: "",
+    goods_spec: "",
+    number: 1,
+    type: "1",
+  });
   const [chooseId, setChooseId] = useState([]);
   const confirmNext = () => {
     const data = dataDetail.spec_list.filter((item) => {
@@ -54,11 +64,23 @@ function Print(props: RouteComponentProps) {
         return true;
       return false;
     });
-    if (data.length) setSpecVisible(false)
+    if (data.length) {
+      setFormData({ ...formData, goods_spec: data[0].id });
+      setSpecVisible(false);
+    }
+  };
+  const postAddCart = async () => {
+    const data = await PostAddCart(formData);
+    console.log(data);
+  };
+  const addCart = () => {
+    if (!formData.goods_spec) return Toast.fail("请选择规格", 1);
+    postAddCart();
   };
   useEffect(() => {
     const data = judgeSearchData<Id>(props.location.search, "id");
     if (typeof data === "string") {
+     
       getGoodsDetail(data);
     }
   }, []);
@@ -70,6 +92,7 @@ function Print(props: RouteComponentProps) {
     const paper = spec_list.paper_spec_id;
     const binding = spec_list.binding_spec_id;
     const printing = spec_list.printing_spec_id;
+    setFormData({ ...formData, goods_spec: spec_list.id,id });
     setCheckData({
       size,
       style,
@@ -120,7 +143,30 @@ function Print(props: RouteComponentProps) {
             onClick={() => setSpecVisible(true)}
             className={style.introduceFlexChoose}
           >
-            <div>选择1 | 选择2 | 选择3</div>
+            <div>
+              {dataDetail.spec_list.length &&
+                `${
+                  dataDetail.spec_list.filter(
+                    (item) => item.id === formData.goods_spec
+                  )[0].binding_spec_info
+                }|${
+                  dataDetail.spec_list.filter(
+                    (item) => item.id === formData.goods_spec
+                  )[0].paper_spec_info
+                }|${
+                  dataDetail.spec_list.filter(
+                    (item) => item.id === formData.goods_spec
+                  )[0].size_spec_info
+                }|${
+                  dataDetail.spec_list.filter(
+                    (item) => item.id === formData.goods_spec
+                  )[0].style_spec_info
+                }|${
+                  dataDetail.spec_list.filter(
+                    (item) => item.id === formData.goods_spec
+                  )[0].printing_spec_info
+                }`}
+            </div>
             <img className="go" src={back} alt="" />
           </div>
         </div>
@@ -193,7 +239,9 @@ function Print(props: RouteComponentProps) {
       </div>
       <div className={style.pay}>
         <div className={style.payPrice}>￥{dataDetail.min_price}</div>
-        <div className={style.payBtn}>开始制作</div>
+        <div onClick={addCart} className={style.payBtn}>
+          添加购物车
+        </div>
       </div>
       <Modal
         popup
@@ -208,7 +256,7 @@ function Print(props: RouteComponentProps) {
               <div className={style.modalDetailLeftInner}>
                 <div>￥88.00</div>
                 <div>已选</div>
-                <div>选择1 | 选择2 | 选择3</div>
+                <div>{}</div>
               </div>
             </div>
             <img

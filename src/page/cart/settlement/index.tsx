@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./index.module.scss";
 import address from "@static/cart/address.png";
 import payMethod from "@static/cart/payMethod.png";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 import TopTitle from "@/components/topTitle";
+import { getSettlement as GetSettlement } from "@api/cart";
+import { SettlementParam } from "@api/cart/api";
+
 import back from "@static/common/back.png";
-export default function Settlement() {
+import { judgeSearchData } from "@/util/commonMethods";
+function Settlement(props: RouteComponentProps) {
+  useEffect(() => {
+    const data = judgeSearchData<Id>(props.location.search, "id");
+    if (typeof data === "string") {
+      getSettlement({ orderId: data });
+    }
+  }, []);
+  const getSettlement = async (param: SettlementParam) => {
+    const data = await GetSettlement(param);
+    console.log(data);
+  };
   return (
     <div>
       <TopTitle title="结算" />
@@ -24,7 +39,7 @@ export default function Settlement() {
       </div>
       <div className={style.good}>
         <div className={style.goodTop}>
-          <img className={style.goodTopImg} src='' alt="" />
+          <img className={style.goodTopImg} src="" alt="" />
           <div className={style.goodTopDetail}>
             <div>手账·照片·周台历</div>
             <div>商品标题</div>
@@ -69,7 +84,7 @@ export default function Settlement() {
             <p>推荐已在微信中绑定银行卡的用户使用</p>
           </div>
         </div>
-        <img src={back} className='go' alt=""/>
+        <img src={back} className="go" alt="" />
       </div>
       <div className={style.pay}>
         <div className={style.payLeft}>
@@ -81,3 +96,4 @@ export default function Settlement() {
     </div>
   );
 }
+export default withRouter(Settlement);

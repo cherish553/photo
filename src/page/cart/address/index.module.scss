@@ -68,10 +68,73 @@
         border-radius: 40px;
         text-align: center;
         line-height: 80px;
-        font-size:28px;
+        font-size: 28px;
         color: white;
     }
 }
-.address{
-    padding-left: 15Px;
+
+.address {
+    // padding-left: 15Px;
+    @include flex
+}   
+
+.modal {
+    padding: 20px 50px;
+    border-radius: 20px 20px 0px 0px;
+    background-color: #fff;
+
+    &Title {
+        color: #000000;
+        font-size: 28px;
+        font-family: Source Han Sans SC;
+        font-weight: bold;
+    }
+
+    &Btn {
+        width: 100%;
+        text-align: center;
+        height: 80px;
+        line-height: 80px;
+        background: #E52611;
+        border-radius: 40px;
+        color: white;
+    }
+
+
+}
+
+.card {
+    @include flex;
+    min-height: 80px;
+    border-bottom: 2px solid rgba(238, 238, 238, 1);
+    box-sizing: border-box;
+    :nth-child(1) {
+        text-align: left;
+        width: 100px;
+        color: #000000;
+        font-size: 24px;
+    }
+
+    :nth-child(2) {
+        input {
+            font-size: 24px !important;
+        }
+
+        flex:1;
+        box-sizing: border-box;
+        padding-left: 100px;
+    }
+}
+
+.detail {
+    align-items: flex-start;
+
+    textarea {
+        width: 100% !important;
+        font-size: 24px !important;
+    }
+
+    p {
+        margin-top: 12Px;
+    }
 }

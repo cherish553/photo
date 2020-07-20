@@ -9,7 +9,7 @@
 
 .introduce {
     @include borderBox(18px 40px 24px);
-    height: 262px;
+    // height: 262px;
     background-color: white;
 
     &Name {
@@ -46,6 +46,9 @@
         }
 
         &Choose {
+            :nth-child(1){
+                margin-right: 10px;
+            }
             @include flex;
 
         }

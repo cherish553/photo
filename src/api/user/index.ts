@@ -5,3 +5,6 @@ export const getLogin = (data: getLoginParam): Promise<getLoginData> => get(`wxL
 
 // 个人中心
 export const getUserIndex = (): Promise<UserIndexData> => get(`userIndex`)
+
+// 收货地址列表
+export const getAddressList = () => get(`addressList`, { page: 1 })

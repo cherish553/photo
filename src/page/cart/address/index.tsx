@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import style from "./index.module.scss";
 import address from "@static/cart/address.png";
 import TopTitle from "@/components/topTitle";
 import { Modal, InputItem, TextareaItem, List, Switch } from "antd-mobile";
+import classnames from "classnames";
+import { getAddressList as GetAddressList } from "@api/user";
 export default function Settlement() {
+  const [modalVisbile, setModalVisbile] = useState(false);
+  const getAddressList = async () => {
+    const data = await GetAddressList();
+    console.log(data);
+  };
+  useEffect(() => {
+    getAddressList();
+  }, []);
   return (
     <div>
       <TopTitle title="地址" />
@@ -22,22 +32,43 @@ export default function Settlement() {
         ))}
       </div>
       <div className={style.bottom}>
-        <div className={style.bottomBtn}>新增地址</div>
+        <div className={style.bottomBtn} onClick={() => setModalVisbile(true)}>
+          新增地址
+        </div>
       </div>
-      <Modal popup visible={true} animationType="slide-up">
-        {["收货人", "手机号码", "省市地区"].map((item, index) => (
-          <InputItem key={index} placeholder="start from right" clear>
-            {item}
-          </InputItem>
+      <Modal
+        className={style.modal}
+        onClose={() => setModalVisbile(false)}
+        popup
+        visible={modalVisbile}
+        animationType="slide-up"
+      >
+        <div className={style.modalTitle}>新增收货地址</div>
+        {[
+          { title: "收货人", place: "请输入收货人姓名" },
+          { title: "手机号码", place: "请输入手机号码" },
+          { title: "省市地区", place: "点击选择" },
+        ].map((item) => (
+          <div className={style.card} key={item.title}>
+            <p>{item.title}</p>
+            <InputItem placeholder={item.place} clear></InputItem>
+          </div>
         ))}
-        <div className={style.address}>
-          <TextareaItem title="详细地址" rows={5} count={100} />
+        <div className={classnames(style.card, style.detail)}>
+          <p>详细地址</p>
+          <TextareaItem
+            placeholder="请输入详细地址（5-120个字）"
+            rows={5}
+            count={120}
+          />
         </div>
         <div className={style.address}>
-          <List.Item extra={<Switch checked={true} onChange={() => {}} />}>
-            设为默认地址
-          </List.Item>
+          <p>设为默认地址</p>
+          <List.Item
+            extra={<Switch checked={true} onChange={() => {}} />}
+          ></List.Item>
         </div>
+        <div className={style.modalBtn}>完成</div>
       </Modal>
     </div>
   );
