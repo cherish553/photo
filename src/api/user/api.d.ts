@@ -15,3 +15,17 @@ export interface UserIndexData {
    sex: string
    total_commission: string
 }
+export interface EditAddressParam {
+   address_id: string
+   realname: string
+   mobile: string
+   is_default: 0
+   country: string
+   province: string
+   city: string
+   district: string
+   address: string
+}
+export interface AreaListParam {
+   parentId?: string
+}

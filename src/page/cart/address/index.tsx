@@ -2,9 +2,22 @@ import React, { useState, useEffect } from "react";
 import style from "./index.module.scss";
 import address from "@static/cart/address.png";
 import TopTitle from "@/components/topTitle";
-import { Modal, InputItem, TextareaItem, List, Switch } from "antd-mobile";
+import {
+  Modal,
+  InputItem,
+  TextareaItem,
+  List,
+  Switch,
+  ActionSheet,
+} from "antd-mobile";
 import classnames from "classnames";
-import { getAddressList as GetAddressList } from "@api/user";
+import {
+  getAddressList as GetAddressList,
+  getAreaList as GetAreaList,
+} from "@api/user";
+const wrapProps = {
+  onTouchStart: (e: Event) => e.preventDefault(),
+};
 export default function Settlement() {
   const [modalVisbile, setModalVisbile] = useState(false);
   const getAddressList = async () => {
@@ -12,8 +25,36 @@ export default function Settlement() {
     console.log(data);
   };
   useEffect(() => {
+    getAreaList();
     getAddressList();
   }, []);
+  const showActionSheet = () => {
+    const BUTTONS = [
+      "Operation1",
+      "Operation2",
+      "Operation2",
+      "Delete",
+      "Cancel",
+    ];
+    ActionSheet.showActionSheetWithOptions(
+      {
+        options: BUTTONS,
+        cancelButtonIndex: BUTTONS.length - 1,
+        destructiveButtonIndex: BUTTONS.length - 2,
+        // title: 'title',
+        message: "I am description, description, description",
+        maskClosable: true,
+      },
+      (buttonIndex) => {
+        console.log(buttonIndex);
+      }
+    );
+  };
+
+  const getAreaList = async () => {
+    const data = await GetAreaList({ parentId: "" });
+    console.log(data);
+  };
   return (
     <div>
       <TopTitle title="地址" />
@@ -37,7 +78,7 @@ export default function Settlement() {
         </div>
       </div>
       <Modal
-        className={style.modal}
+        className={classnames("address", style.modal)}
         onClose={() => setModalVisbile(false)}
         popup
         visible={modalVisbile}
@@ -51,7 +92,15 @@ export default function Settlement() {
         ].map((item) => (
           <div className={style.card} key={item.title}>
             <p>{item.title}</p>
-            <InputItem placeholder={item.place} clear></InputItem>
+            <InputItem
+              onClick={() => {
+                if (item.title === "省市地区") {
+                  showActionSheet();
+                }
+              }}
+              placeholder={item.place}
+              clear
+            ></InputItem>
           </div>
         ))}
         <div className={classnames(style.card, style.detail)}>
