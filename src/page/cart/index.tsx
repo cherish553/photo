@@ -6,7 +6,7 @@ import {
   getCartList as GetCartList,
   postEditCart as PostEditCart,
   delCart as DelCart,
-  postCreateOrder as PostCreateOrder,
+  postCreateOrder as PostCreateOrder
 } from "@api/cart";
 import { CartListData, EditCartParam, DelCartParam } from "@api/cart/api";
 import { Checkbox, ListView, SwipeAction, Toast } from "antd-mobile";

@@ -1,73 +1,59 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TopTitle from "@/components/topTitle";
 import style from "./index.module.scss";
 import { Tabs, Badge } from "antd-mobile";
-
+import { getOrderList as GetOrderList } from "@api/user";
+import { OrderListParam, OrderListData } from "@api/user/api";
+interface TabsInterface extends OrderListParam {
+  title: JSX.Element;
+}
 export default function Works() {
-  const tabs = [
-    { title: <Badge>全部</Badge> },
-    { title: <Badge>待付款</Badge> },
-    { title: <Badge>待发货</Badge> },
-    { title: <Badge>待收货</Badge> },
-    { title: <Badge>待评价</Badge> },
+  const tabs: TabsInterface[] = [
+    { title: <Badge>全部</Badge>, key: "all" },
+    { title: <Badge>待付款</Badge>, key: "unpaid" },
+    { title: <Badge>待发货</Badge>, key: "waitDeliver" },
+    { title: <Badge>待收货</Badge>, key: "waitReceipt" },
+    { title: <Badge>待评价</Badge>, key: "waitComment" },
   ];
+  const getOrderList = async (parma: OrderListParam, flag = false) => {
+    const { data } = await GetOrderList(parma);
+    if (!flag) {
+      setOrderList([...orderList, ...data]);
+    }
+    setOrderList(data);
+  };
+  const [orderList, setOrderList] = useState<OrderListData[]>([]);
+  useEffect(() => {
+    getOrderList({ key: "all" }, true);
+  }, []);
   return (
     <div>
       <TopTitle title="我的订单" />
       <Tabs
         tabs={tabs}
         initialPage={0}
-        onChange={(tab, index) => {
-          console.log("onChange", index, tab);
+        onTabClick={(item, index) => {
+          getOrderList({ key: item.key } as OrderListParam, true);
         }}
-        onTabClick={(tab, index) => {
-          console.log("onTabClick", index, tab);
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "150px",
-          }}
-        >
-          <div className={style.card}>
+      ></Tabs>
+      {orderList.map((item) => (
+          <div  key={item.order_id} className={style.card}>
             <div className={style.cardStatus}>
-              <p>2019-12-12</p>
+              <p>{`${new Date(item.pay_time).getFullYear()}-${
+                new Date(item.pay_time).getMonth() + 1
+              }-${new Date(item.pay_time).getDay()}`}</p>
               <p>待发货</p>
             </div>
             <div className={style.cardDetail}>
               <img src="" alt="" />
               <div className={style.cardDetailRight}>
-                <p>《手账·照片》</p>
+                <p>{item.order_sn}</p>
                 <p>232323333</p>
-                <p>￥88.88</p>
+                <p>￥{item.order_amount}</p>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "150px",
-          }}
-        >
-          Content of second tab
-        </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "150px",
-          }}
-        >
-          Content of third tab
-        </div>
-      </Tabs>
+      ))}
     </div>
   );
 }
