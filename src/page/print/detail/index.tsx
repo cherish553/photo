@@ -3,7 +3,7 @@ import style from "./index.module.scss";
 import { Carousel, Tabs, Badge, Modal } from "antd-mobile";
 import { Rate } from "antd";
 import back from "@static/common/back.png";
-import { query, judgeSearchData } from "@/util/commonMethods";
+import { judgeSearchData } from "@/util/commonMethods";
 import { getGoodsDetail as GetGoodsDetail } from "@api/print";
 import { postAddCart as PostAddCart } from "@api/cart";
 import { CartListParam } from "@api/cart/api";
@@ -80,7 +80,6 @@ function Print(props: RouteComponentProps) {
   useEffect(() => {
     const data = judgeSearchData<Id>(props.location.search, "id");
     if (typeof data === "string") {
-     
       getGoodsDetail(data);
     }
   }, []);

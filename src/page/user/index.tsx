@@ -19,10 +19,12 @@ import { UserIndexData } from "@api/user/api";
 import about from "@static/user/about.png";
 import classnames from "classnames";
 import back from "@static/common/back.png";
+
 export default function User() {
   useEffect(() => {
     getUserIndex();
   }, []);
+
   const [data, setData] = useState<UserIndexData>({
     address: "",
     avatarUrl: "",
@@ -30,6 +32,7 @@ export default function User() {
     name: "",
     sex: "",
     total_commission: "",
+    id: "",
   });
   const getUserIndex = async () => {
     const data = await GetUserIndex();
@@ -43,7 +46,7 @@ export default function User() {
         <div>
           <div className={style.userName}>
             <div className={style.name}>{data.name}</div>
-            <div className={style.no}>No.23232333</div>
+            <div className={style.no}>No.{data.id}</div>
           </div>
           <div className={style.line}></div>
           <div className={style.gather}>
@@ -64,7 +67,7 @@ export default function User() {
           <div className={style.myOrder}>我的订单</div>
           <div className={style.all}>
             <div className={style.search}>查看全部</div>
-            <img src={back} className='go' alt=""/>
+            <img src={back} className="go" alt="" />
           </div>
         </div>
         <div className={style.status}>
@@ -92,7 +95,7 @@ export default function User() {
         <div className={style.list}>
           <List line src={article} inner="我的作品" />
           <List line src={money} inner="我的余额" />
-          <List line src={coupon} inner="我的优惠券" />
+          <List url="/coupon" line src={coupon} inner="我的优惠券" />
           <List src={invite} inner="邀请有礼" />
         </div>
         <div className={classnames(style.list, style.mb34)}>

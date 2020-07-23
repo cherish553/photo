@@ -1,5 +1,5 @@
 import { get, post, del } from '@axios'
-import { getLoginParam, getLoginData, UserIndexData, EditAddressParam, AreaListParam, AreaListData, AddressListData, AddressDetailParam, DelAddressParam, OrderListParam ,OrderListData} from './api'
+import { getLoginParam, getLoginData, UserIndexData, EditAddressParam, AreaListParam, AreaListData, AddressListData, AddressDetailParam, DelAddressParam, OrderListParam, OrderListData, CouponListParam, CouponListData, OrderInfoParam, OrderInfoData } from './api'
 // 印品列表页接口
 export const getLogin = (data: getLoginParam): Promise<getLoginData> => get(`wxLogin`, data)
 
@@ -23,4 +23,11 @@ export const getAddressDetail = (data: AddressDetailParam): Promise<AddressListD
 export const delAddress = (data: DelAddressParam) => del(`delAddress`, data)
 
 // 用户订单列表
-export const getOrderList = (data: OrderListParam):Promise<CommonPagination<OrderListData>> => get(`orderList`, data)
+export const getOrderList = (data: OrderListParam): Promise<CommonPagination<OrderListData>> => get(`orderList`, data)
+
+// 订单详情
+export const getOrderInfo = (data: OrderInfoParam): Promise<OrderInfoData> => get(`orderInfo`, data)
+
+// 用户红包列表
+export const getCouponList = (data: CouponListParam): Promise<CommonPagination<CouponListData>> => get(`couponList`, data)
+

@@ -4,8 +4,21 @@ import style from "./index.module.scss";
 import { Tabs, Badge } from "antd-mobile";
 import { getOrderList as GetOrderList } from "@api/user";
 import { OrderListParam, OrderListData } from "@api/user/api";
+import { changeMonth } from "@/util/commonMethods";
 interface TabsInterface extends OrderListParam {
   title: JSX.Element;
+}
+enum Status {
+  "未支付",
+  "已付款",
+  "已确认",
+  "已完成",
+  "已取消",
+  "申请售后",
+  "售后完成",
+  "发货" = 8,
+  "申请退款",
+  "已退款",
 }
 export default function Works() {
   const tabs: TabsInterface[] = [
@@ -37,22 +50,20 @@ export default function Works() {
         }}
       ></Tabs>
       {orderList.map((item) => (
-          <div  key={item.order_id} className={style.card}>
-            <div className={style.cardStatus}>
-              <p>{`${new Date(item.pay_time).getFullYear()}-${
-                new Date(item.pay_time).getMonth() + 1
-              }-${new Date(item.pay_time).getDay()}`}</p>
-              <p>待发货</p>
-            </div>
-            <div className={style.cardDetail}>
-              <img src="" alt="" />
-              <div className={style.cardDetailRight}>
-                <p>{item.order_sn}</p>
-                <p>232323333</p>
-                <p>￥{item.order_amount}</p>
-              </div>
+        <div key={item.order_id} className={style.card}>
+          <div className={style.cardStatus}>
+            <p>{changeMonth(+item.pay_time * 1000)}</p>
+            <p>{Status[+item.status]}</p>
+          </div>
+          <div className={style.cardDetail}>
+            <img src="" alt="" />
+            <div className={style.cardDetailRight}>
+              <p>{item.order_sn}</p>
+              <p>232323333</p>
+              <p>￥{item.order_amount}</p>
             </div>
           </div>
+        </div>
       ))}
     </div>
   );

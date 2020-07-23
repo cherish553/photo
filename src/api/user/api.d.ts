@@ -14,6 +14,7 @@ export interface UserIndexData {
    name: string
    sex: string
    total_commission: string
+   id: string
 }
 export interface EditAddressParam {
    address_id: string
@@ -75,4 +76,38 @@ export interface OrderListData {
    realname: string
    status: string
    user_id: string
+}
+export interface CouponListParam {
+   key: '1' | '2' | '3'
+}
+export interface CouponListData {
+   bonus_id: string
+   expire_time: string
+   min_goods_amount: string
+   type: number
+   type_money: string
+   type_name: string
+}
+export interface OrderInfoParam {
+   orderId: string
+}
+export interface OrderInfoData {
+   order_goods: OrderGoods[]
+   order_id: string
+   order_sn: string
+   pay_amount: string
+   pay_time: string
+   realname: string 
+}
+
+export interface OrderGoods {
+   class_id: string
+   goods_id: string
+   goods_spec: string
+   id: string
+   index_img: string
+   model_id: null
+   number: string
+   shop_price: string
+   type: string
 }

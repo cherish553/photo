@@ -16,6 +16,8 @@ import log from "@/page/user/balance/log";
 import apply from "@/page/user/balance/apply";
 import invite from "@/page/user/invite";
 import order from "@/page/user/order";
+import orderDetail from "@/page/user/order/detail";
+
 import afterSale from "@/page/user/afterSale";
 import book from "@/page/user/book";
 import robot from "@/page/user/robot";
@@ -43,7 +45,7 @@ import printSelectImg from "@static/tabbar/printSelect.png";
 type SelectStatus = "/" | "cart" | "user" | "print" | "show";
 const Tabbar = (props: RouteComponentProps) => {
   // SelectStatus
-  const [select, setSelect] = useState<any>("/order");
+  const [select, setSelect] = useState<any>("/orderDetail?id=7");
   useEffect(() => {
     // setSelect("print");
   }, []);
@@ -84,13 +86,14 @@ const Tabbar = (props: RouteComponentProps) => {
           <Route strict exact path="/settlement" component={settlement} />,
           <Route strict exact path="/address" component={address} />,
           <Route strict exact path="/works" component={works} />,
-          <Route strict exact path="/Coupon" component={Coupon} />,
+          <Route strict exact path="/coupon" component={Coupon} />,
           <Route strict exact path="/balance" component={balance} />,
           <Route strict exact path="/history" component={history} />,
           <Route strict exact path="/log" component={log} />,
           <Route strict exact path="/apply" component={apply} />,
           <Route strict exact path="/invite" component={invite} />,
           <Route strict exact path="/order" component={order} />,
+          <Route strict exact path="/orderDetail" component={orderDetail} />,
           <Route strict exact path="/afterSale" component={afterSale} />,
           <Route strict exact path="/book" component={book} />,
           <Route strict exact path="/robot" component={robot} />,
