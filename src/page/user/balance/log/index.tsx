@@ -1,25 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import style from "./index.module.scss";
 import TopTitle from "@/components/topTitle";
 import { Tabs, Badge } from "antd-mobile";
-
+import { getWithdrawApply as GetWithdrawApply } from "@api/user";
+import { WithdrawApplyParam } from "@api/user/api";
 export default function Coupon() {
   const tabs = [
     { title: <Badge>近一月</Badge> },
     { title: <Badge>近半年</Badge> },
     { title: <Badge>近一年</Badge> },
   ];
+  const [formData, setFormData] = useState<WithdrawApplyParam>({
+    type: "1",
+  });
+  useEffect(() => {
+    getWithdrawApply();
+  }, [formData]);
+  const getWithdrawApply = async () => {
+    const data = await GetWithdrawApply(formData);
+    console.log(data);
+  };
   return (
     <div>
       <TopTitle title="提现记录" />
       <Tabs
         tabs={tabs}
         initialPage={0}
-        onChange={(tab, index) => {
-          console.log("onChange", index, tab);
-        }}
         onTabClick={(tab, index) => {
-          console.log("onTabClick", index, tab);
+          setFormData({ type: (++index).toString() } as WithdrawApplyParam);
         }}
       >
         <div>

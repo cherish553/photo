@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import style from "./index.module.scss";
 import TopTitle from "@/components/topTitle";
 import bgi from "@static/user/balance/bgi.png";
 import back from "@static/common/back.png";
+
 export default function Coupon() {
+ 
   return (
     <div>
       <TopTitle title="我的余额" />

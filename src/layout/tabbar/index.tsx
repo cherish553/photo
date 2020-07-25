@@ -21,7 +21,7 @@ import orderDetail from "@/page/user/order/detail";
 import afterSale from "@/page/user/afterSale";
 import book from "@/page/user/book";
 import robot from "@/page/user/robot";
-
+import setting from '@/page/user/setting'
 import cart from "@/page/cart";
 import settlement from "@/page/cart/settlement";
 import address from "@/page/cart/address";
@@ -44,8 +44,8 @@ import printImg from "@static/tabbar/print.png";
 import printSelectImg from "@static/tabbar/printSelect.png";
 type SelectStatus = "/" | "cart" | "user" | "print" | "show";
 const Tabbar = (props: RouteComponentProps) => {
-  // SelectStatus
-  const [select, setSelect] = useState<any>("/orderDetail?id=7");
+  // SelectStatus /orderDetail?id=7
+  const [select, setSelect] = useState<any>("log");
   useEffect(() => {
     // setSelect("print");
   }, []);
@@ -98,6 +98,7 @@ const Tabbar = (props: RouteComponentProps) => {
           <Route strict exact path="/book" component={book} />,
           <Route strict exact path="/robot" component={robot} />,
           <Route strict exact path="/login" component={login} />,
+          <Route strict exact path="/setting" component={setting} />,
         </Switch>
       </div>
       {showTabbar && (

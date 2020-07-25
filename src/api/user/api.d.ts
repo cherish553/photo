@@ -97,7 +97,7 @@ export interface OrderInfoData {
    order_sn: string
    pay_amount: string
    pay_time: string
-   realname: string 
+   realname: string
 }
 
 export interface OrderGoods {
@@ -110,4 +110,18 @@ export interface OrderGoods {
    number: string
    shop_price: string
    type: string
+}
+export interface SettingParam {
+   name: string
+   sex: string
+   avatarUrl: string
+   address: string
+}
+export interface CommissionLogsParam {
+   type: '1' | '2' | '3'
+}
+export interface ApplyWithdrawalParam {
+   money: string
+}
+export interface WithdrawApplyParam extends CommissionLogsParam {
 }
