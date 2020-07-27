@@ -1,5 +1,5 @@
 import { get, post, del } from '@axios'
-import { getLoginParam, getLoginData, UserIndexData, EditAddressParam, AreaListParam, AreaListData, AddressListData, AddressDetailParam, DelAddressParam, OrderListParam, OrderListData, CouponListParam, CouponListData, OrderInfoParam, OrderInfoData, SettingParam, CommissionLogsParam, ApplyWithdrawalParam, WithdrawApplyParam } from './api'
+import { getLoginParam, getLoginData, UserIndexData, EditAddressParam, AreaListParam, AreaListData, AddressListData, AddressDetailParam, DelAddressParam, OrderListParam, OrderListData, CouponListParam, CouponListData, OrderInfoParam, OrderInfoData, SettingParam, CommissionLogsParam, ApplyWithdrawalParam, WithdrawApplyParam, WithdrawApplyData } from './api'
 // 印品列表页接口
 export const getLogin = (data: getLoginParam): Promise<getLoginData> => get(`wxLogin`, data)
 
@@ -41,4 +41,4 @@ export const getCommissionLogs = (data: CommissionLogsParam) => get(`commissionL
 export const getApplyWithdrawal = (data: ApplyWithdrawalParam) => get(`applyWithdrawal`, data)
 
 // 提现历史
-export const getWithdrawApply = (data: WithdrawApplyParam) => get(`withdrawApply`, data)
+export const getWithdrawApply = (data: WithdrawApplyParam): Promise<CommonPagination<WithdrawApplyData>> => get(`withdrawApply`, data)

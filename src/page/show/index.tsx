@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Logo from "@/layout/logo";
 import star from "@static/show/star.png";
 import style from "./index.module.scss";
@@ -7,7 +7,7 @@ import classnames from "classnames";
 import { Carousel, WingBlank } from "antd-mobile";
 import { Refs } from "./components/modal/declare";
 import Modal from "./components/modal";
-
+import {getWorkList as GetWorkList} from '@api/show'
 export default function A() {
   const Ref = useRef<Refs>();
   const [active, setActive] = useState(0);
@@ -16,6 +16,13 @@ export default function A() {
   const showModal = () => {
     Ref.current?.setActive(true);
   };
+  useEffect(()=>{
+    getWorkList()
+  },[])
+  const getWorkList = async ()=>{
+    const data = await GetWorkList()
+    console.log(data)
+  }
   return (
     <div className={style.relative}>
       <Logo />

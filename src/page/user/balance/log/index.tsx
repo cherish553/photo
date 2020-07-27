@@ -3,7 +3,7 @@ import style from "./index.module.scss";
 import TopTitle from "@/components/topTitle";
 import { Tabs, Badge } from "antd-mobile";
 import { getWithdrawApply as GetWithdrawApply } from "@api/user";
-import { WithdrawApplyParam } from "@api/user/api";
+import { WithdrawApplyParam, WithdrawApplyData } from "@api/user/api";
 export default function Coupon() {
   const tabs = [
     { title: <Badge>近一月</Badge> },
@@ -13,12 +13,13 @@ export default function Coupon() {
   const [formData, setFormData] = useState<WithdrawApplyParam>({
     type: "1",
   });
+  const [dataList, setDataList] = useState<WithdrawApplyData[]>([]);
   useEffect(() => {
     getWithdrawApply();
   }, [formData]);
   const getWithdrawApply = async () => {
-    const data = await GetWithdrawApply(formData);
-    console.log(data);
+    const { data } = await GetWithdrawApply(formData);
+    setDataList(data);
   };
   return (
     <div>
@@ -29,21 +30,18 @@ export default function Coupon() {
         onTabClick={(tab, index) => {
           setFormData({ type: (++index).toString() } as WithdrawApplyParam);
         }}
-      >
-        <div>
-          <p className={style.date}> 2019-12</p>
-          <div className={style.list}>
-            {[1, 2].map((item) => (
-              <div className={style.listCard} key={item}>
-                <p className={style.listCardPrice}>￥1.00</p>
-                <p>2020-1-1</p>
-              </div>
-            ))}
-          </div>
+      ></Tabs>
+      <div>
+        {/* <p className={style.date}> 2019-12</p> */}
+        <div className={style.list}>
+          {dataList.map((item) => (
+            <div className={style.listCard} key={item.id}>
+              <p className={style.listCardPrice}>￥{item.money}</p>
+              <p>{item.created_time}</p>
+            </div>
+          ))}
         </div>
-        <div></div>
-        <div></div>
-      </Tabs>
+      </div>
     </div>
   );
 }

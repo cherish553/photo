@@ -125,3 +125,11 @@ export interface ApplyWithdrawalParam {
 }
 export interface WithdrawApplyParam extends CommissionLogsParam {
 }
+export interface WithdrawApplyData {
+   created_time: string
+   id: string
+   money: string
+   status: string
+   updated_at: string
+   user_id: string
+}
