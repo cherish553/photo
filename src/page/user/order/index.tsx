@@ -63,6 +63,17 @@ export default function Works() {
               <p>￥{item.order_amount}</p>
             </div>
           </div>
+          <div className={style.btnList}>
+            {Status[+item.status] === "已付款" && [
+              <div className={style.btn}>申请售后</div>,
+              <div className={style.btn}>确认收货</div>,
+            ]}
+            {Status[+item.status] === "已确认" && [
+              <div className={style.btn}>去评价</div>,
+            ]}
+
+            {/* <div className={style.btn}></div> */}
+          </div>
         </div>
       ))}
     </div>
