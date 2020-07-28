@@ -28,6 +28,8 @@ import address from "@/page/cart/address";
 import printDetail from "@/page/print/detail";
 import printDetailComment from "@/page/print/detail/comment";
 import login from "@/page/login";
+import comment from "@/page/order/comment";
+
 
 import { TabBar } from "antd-mobile";
 import classnames from "classnames";
@@ -99,6 +101,7 @@ const Tabbar = (props: RouteComponentProps) => {
           <Route strict exact path="/robot" component={robot} />,
           <Route strict exact path="/login" component={login} />,
           <Route strict exact path="/setting" component={setting} />,
+          <Route strict exact path="/comment" component={comment} />,
         </Switch>
       </div>
       {showTabbar && (

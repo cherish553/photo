@@ -1,0 +1,124 @@
+@import '@/style/index.scss';
+
+.address {
+    @include flex(flex-start);
+    @include borderBox(20px 40px);
+    height: 120px;
+    margin-top: 20px;
+    background-color: #fff;
+
+    img {
+        width: 32px;
+    }
+
+    &Detail {
+        margin-left: 20px;
+        font-size: 24px;
+
+        :nth-child(1) {
+            color: #000000;
+        }
+
+        :nth-child(2) {
+            margin-top: 6px;
+            color: #888888;
+        }
+    }
+}
+
+.good {
+    @include borderBox(32px 40px);
+    @include flex(flex-start, flex-start);
+    background-color: #fff;
+    margin-top: 20px;
+
+    img {
+        width: 180px;
+        height: 180px;
+        background-color: skyblue;
+    }
+
+    &Right {
+        flex: 1;
+        margin-left: 8px;
+        font-size: 24px;
+        color: #888888;
+
+        &Name {
+            color: #020202;
+            font-size: 28px;
+        }
+
+        &Title {
+            margin-top: 10px;
+        }
+
+        &Spec {
+            @include flex;
+            margin-top: 12px;
+
+            :last-child {
+                color: #020202;
+            }
+        }
+    }
+}
+
+.price {
+    @include borderBox(0 40px);
+    @include flex;
+    background-color: #fff;
+    height: 40px;
+    font-size: 20px;
+    color: #888888;
+}
+
+.pay,
+.delivery {
+    @include borderBox(0 40px);
+    @include flex;
+    height: 80px;
+    background-color: #fff;
+    font-size: 24px;
+
+    :nth-child(1) {
+        color: #020202;
+    }
+}
+
+.pay {
+    :last-child {
+        color: #E52611;
+    }
+
+    border-bottom:2px solid #EEEEEE;
+}
+
+.delivery {
+    :last-child {
+        color: #888888;
+    }
+}
+
+.order {
+    @include borderBox(0 40px);
+    background-color: #fff;
+    margin-top: 20px;
+    &Title {
+        color: #020202;
+        font-size: 28px;
+        height: 80px;
+        line-height: 80px;
+    }
+
+    &Card {
+        @include flex(flex-start);
+        height: 40px;
+        color: #888888;
+        font-size: 20px;
+
+        :nth-child(1) {
+            margin-right: 60px;
+        }
+    }
+}
