@@ -28,7 +28,7 @@ import address from "@/page/cart/address";
 import printDetail from "@/page/print/detail";
 import printDetailComment from "@/page/print/detail/comment";
 import login from "@/page/login";
-import comment from "@/page/order/comment";
+import comment from "@/page/user/order/comment";
 
 
 import { TabBar } from "antd-mobile";
@@ -47,7 +47,7 @@ import printSelectImg from "@static/tabbar/printSelect.png";
 type SelectStatus = "/" | "cart" | "user" | "print" | "show";
 const Tabbar = (props: RouteComponentProps) => {
   // SelectStatus /orderDetail?id=7
-  const [select, setSelect] = useState<any>("order");
+  const [select, setSelect] = useState<any>("comment?id=3");
   useEffect(() => {
     // setSelect("print");
   }, []);
