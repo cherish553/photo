@@ -17,19 +17,19 @@ function Modal(props: any, ref: any) {
     toggle(active);
   }, [active]);
   const toggle = (active: boolean) => {
-    // if (active) {
-    //   document.body.addEventListener("touchmove", prevent, { passive: true });
-    //   setTimeout(() => {
-    //     setWidth("18.75rem");
-    //     setLeft("0");
-    //   }, 0);
-    // } else {
-    //   document.body.removeEventListener("touchmove", prevent);
-    //   setTimeout(() => {
-    //     setWidth("0");
-    //     setLeft("100%");
-    //   }, 0);
-    // }
+    if (active) {
+      document.body.addEventListener("touchmove", prevent, { passive: true });
+      setTimeout(() => {
+        setWidth("18.75rem");
+        setLeft("0");
+      }, 0);
+    } else {
+      document.body.removeEventListener("touchmove", prevent);
+      setTimeout(() => {
+        setWidth("0");
+        setLeft("100%");
+      }, 0);
+    }
   };
   useImperativeHandle(
     ref,

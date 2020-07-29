@@ -1,5 +1,5 @@
 import { get, post, del } from '@axios'
-import { getLoginParam, getLoginData, UserIndexData, EditAddressParam, AreaListParam, AreaListData, AddressListData, AddressDetailParam, DelAddressParam, OrderListParam, OrderListData, CouponListParam, CouponListData, OrderInfoParam, OrderInfoData, SettingParam, CommissionLogsParam, ApplyWithdrawalParam, WithdrawApplyParam, WithdrawApplyData } from './api'
+import { getLoginParam, getLoginData, UserIndexData, EditAddressParam, AreaListParam, AreaListData, AddressListData, AddressDetailParam, DelAddressParam, OrderListParam, OrderListData, CouponListParam, CouponListData, OrderInfoParam, OrderInfoData, SettingParam, CommissionLogsParam, ApplyWithdrawalParam, WithdrawApplyParam, WithdrawApplyData, AfterSalesParam, ShareInfoData,CommissionLogsData } from './api'
 // 印品列表页接口
 export const getLogin = (data: getLoginParam): Promise<getLoginData> => get(`wxLogin`, data)
 
@@ -35,10 +35,22 @@ export const getCouponList = (data: CouponListParam): Promise<CommonPagination<C
 export const postSettings = (data: SettingParam) => post(`settings`, data)
 
 // 分佣历史
-export const getCommissionLogs = (data: CommissionLogsParam) => get(`commissionLogs`, data)
+export const getCommissionLogs = (data: CommissionLogsParam):Promise<CommonPagination<CommissionLogsData>> => get(`commissionLogs`, data)
 
 // 提现申请
 export const getApplyWithdrawal = (data: ApplyWithdrawalParam) => get(`applyWithdrawal`, data)
 
 // 提现历史
 export const getWithdrawApply = (data: WithdrawApplyParam): Promise<CommonPagination<WithdrawApplyData>> => get(`withdrawApply`, data)
+
+// 公共图片上传
+export const postUploadImage = (data: FormData): Promise<string | false> => post('uploadImage', data)
+
+// 确认收货接口
+export const getReceiptOrder = (data: OrderInfoParam) => get(`receiptOrder`, data)
+
+// 申请售后
+export const postAfterSales = (data: AfterSalesParam) => post(`/afterSales`, data)
+
+// 邀请分销页接口
+export const getShareInfo = (): Promise<ShareInfoData> => get(`shareInfo`)

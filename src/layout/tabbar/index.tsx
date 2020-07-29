@@ -18,7 +18,7 @@ import invite from "@/page/user/invite";
 import order from "@/page/user/order";
 import orderDetail from "@/page/user/order/detail";
 
-import afterSale from "@/page/user/afterSale";
+import afterSale from "@/page/user/order/afterSale";
 import book from "@/page/user/book";
 import robot from "@/page/user/robot";
 import setting from '@/page/user/setting'
@@ -47,7 +47,7 @@ import printSelectImg from "@static/tabbar/printSelect.png";
 type SelectStatus = "/" | "cart" | "user" | "print" | "show";
 const Tabbar = (props: RouteComponentProps) => {
   // SelectStatus /orderDetail?id=7
-  const [select, setSelect] = useState<any>("comment?id=3");
+  const [select, setSelect] = useState<any>("history");
   useEffect(() => {
     // setSelect("print");
   }, []);

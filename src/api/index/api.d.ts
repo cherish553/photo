@@ -1,6 +1,7 @@
 export interface IndexData {
    bannerList: BannerList[]
    hotList:HotList[]
+   newList:HotList[]
 }
 export interface BannerList {
    id: number

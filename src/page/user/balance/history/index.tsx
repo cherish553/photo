@@ -3,7 +3,7 @@ import style from "./index.module.scss";
 import TopTitle from "@/components/topTitle";
 import { Tabs, Badge } from "antd-mobile";
 import { getCommissionLogs as GetCommissionLogs } from "@api/user";
-import { CommissionLogsParam } from "@api/user/api";
+import { CommissionLogsParam, CommissionLogsData } from "@api/user/api";
 export default function Coupon() {
   const tabs = [
     { title: <Badge>近一月</Badge> },
@@ -13,12 +13,13 @@ export default function Coupon() {
   const [formData, setFormData] = useState<CommissionLogsParam>({
     type: "1",
   });
+  const [data, setData] = useState<CommissionLogsData[]>([]);
   useEffect(() => {
     getCommissionLogs();
   }, [formData]);
   const getCommissionLogs = async () => {
-    const data = await GetCommissionLogs(formData);
-    console.log(data);
+    const {data} = await GetCommissionLogs(formData);
+    setData(data)
   };
   return (
     <div>
@@ -31,14 +32,14 @@ export default function Coupon() {
         }}
       ></Tabs>
       <div>
-        <p className={style.date}> 2019-12</p>
+        {/* <p className={style.date}> 2019-12</p> */}
         <div className={style.list}>
-          {[1, 2].map((item) => (
-            <div className={style.listCard} key={item}>
-              <p className={style.listCardPrice}>￥1.00</p>
+          {data.map((item) => (
+            <div className={style.listCard} key={item.id}>
+              <p className={style.listCardPrice}>￥{item.commission}</p>
               <div className={style.listCardBottom}>
-                <p>来自朋友：chrimer</p>
-                <p>2020-1-1</p>
+                <p>来自朋友：{item.children_name}</p>
+                <p>{item.created_time}</p>
               </div>
             </div>
           ))}

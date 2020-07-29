@@ -110,6 +110,7 @@ export interface OrderGoods {
    number: string
    shop_price: string
    type: string
+   goods_name: string
 }
 export interface SettingParam {
    name: string
@@ -130,6 +131,27 @@ export interface WithdrawApplyData {
    id: string
    money: string
    status: string
+   updated_at: string
+   user_id: string
+}
+export interface AfterSalesParam extends OrderInfoParam {
+   info: string
+   img: string
+}
+export interface ShareInfoData {
+   children: string
+   id: string
+   total_commission: string
+}
+export interface CommissionLogsData{
+   children_id: string
+   children_name: string
+   commission: string
+   created_at: string
+   created_time: string
+   id: string
+   msg: string
+   order_id: string
    updated_at: string
    user_id: string
 }

@@ -2,8 +2,15 @@ import React, { useEffect, useState } from "react";
 import TopTitle from "@/components/topTitle";
 import style from "./index.module.scss";
 import { Tabs, Badge } from "antd-mobile";
-import { getOrderList as GetOrderList } from "@api/user";
-import { OrderListParam, OrderListData } from "@api/user/api";
+import {
+  getOrderList as GetOrderList,
+  getReceiptOrder as GetReceiptOrder,
+} from "@api/user";
+import {
+  OrderListParam,
+  OrderListData,
+  OrderInfoParam,
+} from "@api/user/api";
 import { changeMonth } from "@/util/commonMethods";
 interface TabsInterface extends OrderListParam {
   title: JSX.Element;
@@ -39,6 +46,11 @@ export default function Works() {
   useEffect(() => {
     getOrderList({ key: "all" }, true);
   }, []);
+  const getReceiptOrder = async (param: OrderInfoParam) => {
+    const data = await GetReceiptOrder(param);
+    if (!data) return;
+    getOrderList({ key: "all" }, true);
+  };
   return (
     <div>
       <TopTitle title="我的订单" />
@@ -66,7 +78,12 @@ export default function Works() {
           <div className={style.btnList}>
             {Status[+item.status] === "已付款" && [
               <div className={style.btn}>申请售后</div>,
-              <div className={style.btn}>确认收货</div>,
+              <div
+                onClick={() => getReceiptOrder({ orderId: item.order_id })}
+                className={style.btn}
+              >
+                确认收货
+              </div>,
             ]}
             {Status[+item.status] === "已确认" && [
               <div className={style.btn}>去评价</div>,

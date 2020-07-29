@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import TopTitle from "@/components/topTitle";
 import style from "./index.module.scss";
-import { Rate } from "antd";
 import { ImagePicker } from "antd-mobile";
-import { getOrderInfo as GetOrderInfo } from "@api/user";
-import { OrderInfoParam, OrderInfoData } from "@api/user/api";
+import { postUploadImage } from "@/util/commonMethods";
+import {
+  getOrderInfo as GetOrderInfo,
+  postAfterSales as PostAfterSales,
+} from "@api/user";
+import { OrderInfoParam, OrderInfoData, AfterSalesParam } from "@api/user/api";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { judgeSearchData } from "@/util/commonMethods";
 function Comment(props: RouteComponentProps) {
@@ -12,6 +15,7 @@ function Comment(props: RouteComponentProps) {
     const data = judgeSearchData<Id>(props.location.search, "id");
     if (typeof data === "string") {
       getOrderInfo({ orderId: data });
+      setForm({...form,orderId:data})
     }
   }, []);
   const [data, setData] = useState<OrderInfoData>({
@@ -27,13 +31,27 @@ function Comment(props: RouteComponentProps) {
     const data = await GetOrderInfo(param);
     setData(data);
   };
-  const confirm = () => {
+  const [form, setForm] = useState<AfterSalesParam>({
+    info: "",
+    img: "",
+    orderId: "",
+  });
+  const postAfterSales = async (param: AfterSalesParam) => {
+    const data = await PostAfterSales(param);
     console.log(data);
-    console.log(fileList);
+  };
+  const confirm = async () => {
+    const param = form;
+    if (fileList.length) {
+      const data = await postUploadImage(fileList[0].file);
+      if (data) param.img = data;
+    }
+    const data = await PostAfterSales(param);
+    console.log(data);
   };
   return (
     <div>
-      <TopTitle title="评价" />
+      <TopTitle title="申请售后" />
       {data.order_goods.map((item) => (
         <div className={style.detail} key={item.id}>
           <img src={item.index_img} alt="" />
@@ -44,16 +62,20 @@ function Comment(props: RouteComponentProps) {
           </div>
         </div>
       ))}
-      <div className={style.star}>
+      {/* <div className={style.star}>
         <div>选择评分</div>
         <Rate allowHalf defaultValue={2.5} />
-      </div>
+      </div> */}
       <div className={style.comment}>
-        <p>填写评价</p>
-        <input type="text" value={123} />
+        <p>填写售后说明</p>
+        <input
+          type="text"
+          value={form.info}
+          onChange={(e) => setForm({ ...form, info: e.target.value })}
+        />
       </div>
       <div className={style.upload}>
-        <p>上传图片</p>
+        <p>上传凭证</p>
         <ImagePicker
           files={fileList}
           onChange={(e) => {
