@@ -34,7 +34,7 @@ export default function Coupon() {
       <div>
         {/* <p className={style.date}> 2019-12</p> */}
         <div className={style.list}>
-          {data.map((item) => (
+          {data?.map((item) => (
             <div className={style.listCard} key={item.id}>
               <p className={style.listCardPrice}>￥{item.commission}</p>
               <div className={style.listCardBottom}>

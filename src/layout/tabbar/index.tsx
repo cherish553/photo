@@ -47,7 +47,7 @@ import printSelectImg from "@static/tabbar/printSelect.png";
 type SelectStatus = "/" | "cart" | "user" | "print" | "show";
 const Tabbar = (props: RouteComponentProps) => {
   // SelectStatus /orderDetail?id=7
-  const [select, setSelect] = useState<any>("history");
+  const [select, setSelect] = useState<any>("/");
   useEffect(() => {
     // setSelect("print");
   }, []);
